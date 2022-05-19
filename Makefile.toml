@@ -1,0 +1,35 @@
+[tasks.format]
+install_crate = "rustfmt"
+command = "cargo"
+args = ["fmt", "--", "--emit=files"]
+
+[tasks.clean]
+command = "cargo"
+args = ["clean"]
+
+[tasks.build]
+command = "cargo"
+args = ["build"]
+dependencies = ["clean"]
+
+[tasks.build-wasm]
+script = ["wasm-pack build"]
+
+[tasks.build-www]
+script = ["cd ./www", "npm run build"]
+
+[tasks.start-www]
+script = ["cd ./www", "npm run start"]
+dependencies = ["format", "build", "test"]
+
+[tasks.dev]
+script = ["cd ./www", "npm run start"]
+dependencies = ["build-wasm"]
+
+[tasks.test]
+command = "cargo"
+args = ["test"]
+dependencies = ["clean"]
+
+[tasks.my-flow]
+dependencies = ["format", "build", "test"]

@@ -1,0 +1,49 @@
+[package]
+name = "systemless-debloat-config-manager"
+version = "0.0.1"
+authors = ["Fabio Tea <iam@f4b.io>"]
+edition = "2018"
+description = ""
+repository = "https://gitlab.com/f4b.io/systemless-debloat-config-manager_rs.git"
+license = "AGPL"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["console_error_panic_hook"]
+
+[dependencies]
+tera = "1.15.0"
+lazy_static = "1.4.0"
+wasm-bindgen = "0.2.80"
+getrandom = { version = "0.2.6", features = ["js"] }
+serde = { version = "1.0.137", features = ["derive"] }
+
+# The `console_error_panic_hook` crate provides better debugging of panics by
+# logging them with `console.error`. This is great for development, but requires
+# all the `std::fmt` and `std::panicking` infrastructure, so isn't great for
+# code size when deploying.
+console_error_panic_hook = { version = "0.1.7", optional = true }
+
+# `wee_alloc` is a tiny allocator for wasm that is only ~1K in code size
+# compared to the default allocator's ~10K. It is slower than the default
+# allocator, however.
+#
+# Unfortunately, `wee_alloc` requires nightly Rust when targeting wasm for now.
+wee_alloc = { version = "0.4.5", optional = true }
+
+[dependencies.web-sys]
+version = "0.3.57"
+features = [
+    "console",
+]
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3.30"
+
+[profile.release]
+# Tell `rustc` to optimize for small code size.
+opt-level = "s"
+lto = true
