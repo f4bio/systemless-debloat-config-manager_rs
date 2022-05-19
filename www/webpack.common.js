@@ -10,7 +10,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "bootstrap.js"
   },
-  mode: "development",
+  mode: "none",
   module: {
     rules: [
       {

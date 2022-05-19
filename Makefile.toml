@@ -18,12 +18,12 @@ script = ["wasm-pack build"]
 [tasks.build-www]
 script = ["cd ./www", "npm run build"]
 
-[tasks.start-www]
-script = ["cd ./www", "npm run start"]
+[tasks.serve-www]
+script = ["cd ./www", "npm run serve"]
 dependencies = ["format", "build", "test"]
 
 [tasks.dev]
-script = ["cd ./www", "npm run start"]
+script = ["cd ./www", "npm run serve:dev"]
 dependencies = ["build-wasm"]
 
 [tasks.test]

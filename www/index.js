@@ -66,5 +66,4 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   signatureCode.classList.remove("hidden");
   doUpdate();
-
 });
