@@ -1,12 +1,9 @@
 import "./style.scss";
-import hljs from "highlight.js/lib/core";
-import { SignatureTemplate } from "esig";
+import { SignatureTemplate } from "systemless-debloat-config-manager";
 import wasmLogo from "./assets/webassembly-icon.svg";
 import rustLogo from "./assets/rust-lang-icon.png";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  hljs.registerLanguage("html", require("highlight.js/lib/languages/xml"));
-
   document.querySelector("#rustLangIcon").src = rustLogo;
   document.querySelector("#webassemblyIcon").src = wasmLogo;
 
@@ -32,7 +29,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     signatureCode.querySelector("code").textContent = result;
     signatureWysiwyg.innerHTML = result;
-    hljs["highlightElement"](signatureCode.querySelector("code"));
   };
 
   // eslint-disable-next-line no-unused-vars
