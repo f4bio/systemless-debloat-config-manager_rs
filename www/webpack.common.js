@@ -2,7 +2,7 @@ const path = require("path");
 const { SourceMapDevToolPlugin } = require("webpack");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: "./bootstrap.js",
@@ -14,8 +14,32 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.s[ac]ss$/i,
-        use: ["style-loader", "css-loader", "sass-loader", "postcss-loader"]
+        test: /\.(scss)$/,
+        use: [
+          {
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader"
+          },
+          {
+            loader: "sass-loader"
+          },
+          {
+            // Run postcss actions
+            loader: "postcss-loader",
+            options: {
+              // `postcssOptions` is needed for postcss 8.x;
+              // if you use postcss 7.x skip the key
+              postcssOptions: {
+                // postcss plugins, can be exported to postcss.config.js
+                plugins: () => {
+                  [require("autoprefixer")];
+                }
+              }
+            }
+          }
+        ]
       },
       {
         test: /\.(png|jpe?g|webp|git|svg|)$/i,
@@ -40,13 +64,7 @@ module.exports = {
   plugins: [
     new SourceMapDevToolPlugin(),
     new CleanWebpackPlugin(),
-    new FaviconsWebpackPlugin("./assets/esig.png"),
-    // new CopyPlugin({
-    //   patterns: [
-    //     { from: "./assets/webassembly-icon.svg", to: "assets/" },
-    //     { from: "./assets/rust-lang-icon.png", to: "assets/" },
-    //   ],
-    // }),
+    new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       template: "index.html"
     })

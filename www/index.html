@@ -1,152 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="h-100">
 
 <head>
-  <meta charset="utf-8" />
-  <title>esig</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.98.0">
+  <title>Cover Template · Bootstrap v5.2</title>
 </head>
 
-<body>
-  <noscript>This page contains webassembly and javascript content, please enable
-    javascript in your browser.</noscript>
-
-  <div class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="lg:text-center mb-4">
-        <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">
-          esig
-        </h2>
-        <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-          A better way to generate email signatures
-        </p>
-        <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-          Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam
-          voluptatum cupiditate veritatis in accusamus quisquam.
-        </p>
-        by <a href="https://iam.f4b.io" target="_blank">f4bio</a>
+<body class="d-flex h-100 text-center text-white bg-dark">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+      <div>
+        <h3 class="float-md-start mb-0">Cover</h3>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+          <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">Home</a>
+          <a class="nav-link fw-bold py-1 px-0" href="#">Features</a>
+          <a class="nav-link fw-bold py-1 px-0" href="#">Contact</a>
+        </nav>
       </div>
+    </header>
 
-      <div class="container mx-auto">
-        <div class="flex flex-row">
-          <div class="flex-1 text-sm w-1/2">
-            <div class="relative h-full w-full" id="result-pane">
-              <div class="absolute top-0 right-0">
-                <div class="flex flex-row">
-                  <button type="button"
-                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-xs font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    title="Code" id="code">
-                    <span><i class="fas fa-code mr-2"></i></span>
-                    <span>Code</span>
-                  </button>
-                  <button type="button"
-                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-xs font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    title="WYSIWYG" id="wysiwyg">
-                    <span><i class="fas fa-hand-sparkles mr-2"></i></span>
-                    <span>WYSIWYG</span>
-                  </button>
-                  <button type="button"
-                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-xs font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    title="Copy to Clipboard" id="copy2clipboard">
-                    <span><i class="fas fa-copy mr-2"></i></span>
-                    <span>Copy</span>
-                  </button>
-                </div>
-              </div>
-              <div id="signatureCode" class="hidden">
-                <pre><code class="language-html"></code></pre>
-              </div>
-              <div id="signatureWysiwyg" class="hidden">
-              </div>
-            </div>
+    <main class="px-3">
+      <h1>Cover your page.</h1>
+      <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the
+        text, and add your own fullscreen background photo to make it your own.</p>
+      <p class="lead">
+        <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
+      </p>
+    </main>
+
+    <footer class="mt-auto text-white-50">
+      <p>Cover template for
+        <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by
+        <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.
+      </p>
+
+      <div class="container">
+        <div class="row" style="height: 32px">
+          <div class="col-4">
+            <a href="https://www.rust-lang.org" target="_blank">rust</a>
+            <img id="rustLangIcon" class="img-fluid" alt="Rust Logo" />
           </div>
-
-          <div class="flex-1 w-1/2">
-            <form action="#" method="POST">
-              <div class="shadow sm:rounded-md sm:overflow-hidden">
-                <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
-                  <div class="grid grid-cols-3 gap-6">
-                    <div class="col-span-3 sm:col-span-2">
-                      <label for="name" class="block text-sm font-medium text-gray-700">
-                        Name
-                      </label>
-                      <div class="mt-1 flex rounded-md shadow-sm">
-                        <input type="text" name="name" id="name" class="default-text-input" placeholder="Hello Dvc" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="grid grid-cols-3 gap-6">
-                    <div class="col-span-3 sm:col-span-2">
-                      <label for="position" class="block text-sm font-medium text-gray-700">
-                        Position
-                      </label>
-                      <div class="mt-1 flex rounded-md shadow-sm">
-                        <input type="text" name="position" id="position" class="default-text-input"
-                          placeholder="Greeter" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="grid grid-cols-3 gap-6">
-                    <div class="col-span-3 sm:col-span-2">
-                      <label for="phone" class="block text-sm font-medium text-gray-700">
-                        Phone
-                      </label>
-                      <div class="mt-1 flex rounded-md shadow-sm">
-                        <span
-                          class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                          +49
-                        </span>
-                        <input type="text" name="phone" id="phone" class="default-text-input"
-                          placeholder="16013371337" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="grid grid-cols-3 gap-6">
-                    <div class="col-span-3 sm:col-span-2">
-                      <label for="email" class="block text-sm font-medium text-gray-700">
-                        Email
-                      </label>
-                      <div class="mt-1 flex rounded-md shadow-sm">
-                        <input type="text" name="email" id="email" class="default-text-input" placeholder="sup@d.vc" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="grid grid-cols-3 gap-6">
-                    <div class="col-span-3 sm:col-span-2">
-                      <label for="website" class="block text-sm font-medium text-gray-700">
-                        Website
-                      </label>
-                      <div class="mt-1 flex rounded-md shadow-sm">
-                        <span
-                          class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                          https://www.
-                        </span>
-                        <input type="text" name="website" id="website" class="default-text-input"
-                          placeholder="sup.dvc" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </form>
+          <div class="col-4">
+            <a href="https://www.rust-lang.org/what/wasm" target="_blank">WASM</a>
+            <img id="webassemblyIcon" class="img-fluid" alt="WebAssembly Logo" />
           </div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="fixed bottom-2 right-2 flex flex-row items-center">
-    <span class="text-xs">powered by</span>
-    <a href="https://www.rust-lang.org" target="_blank">
-      <img id="rustLangIcon" class="ml-1 h-8 w-8" alt="Rust Logo" />
-    </a>
-    <span class="text-xs">+</span>
-    <a href="https://www.rust-lang.org/what/wasm" target="_blank">
-      <img id="webassemblyIcon" class="ml-1 h-8 w-8" alt="WebAssemble Logo" />
-    </a>
+    </footer>
   </div>
 </body>
 
