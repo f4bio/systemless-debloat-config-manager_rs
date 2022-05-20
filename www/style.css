@@ -1,13 +1,21 @@
-@import "~bootstrap/scss/bootstrap";
+@import "bootstrap";
+@import "@fortawesome/fontawesome-free/css/all.css";
 
-$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
-@import "~@fortawesome/fontawesome-free/scss/fontawesome";
-@import "~@fortawesome/fontawesome-free/scss/solid";
-@import "~@fortawesome/fontawesome-free/scss/regular";
+/*
+// $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+// @import "~@fortawesome/fontawesome-free/scss/fontawesome";
+// @import "~@fortawesome/fontawesome-free/scss/solid";
+// @import "~@fortawesome/fontawesome-free/scss/regular";
+*/
 
 body {
   text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
   box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+}
+
+.brand-logo {
+  height: 2rem;
+  /* width: 2rem; */
 }
 
 .btn-secondary,

@@ -1,11 +1,13 @@
-import "./style.scss";
+import "./style.css";
 // import { SignatureTemplate } from "systemless-debloat-config-manager";
-import wasmLogo from "./assets/webassembly-icon_512x512.png";
-import rustLogo from "./assets/rust-lang-icon_512x512.png";
+import wasmLogo from "./assets/webassembly-icon.svg";
+import rustLogo from "./assets/rust-lang-icon.png";
+import bootstrapLogo from "./assets/bootstrap-icon.svg";
 
 const doInit = () => {
   document.querySelector("#rustLangIcon").src = rustLogo;
   document.querySelector("#webassemblyIcon").src = wasmLogo;
+  document.querySelector("#bootstrapIcon").src = bootstrapLogo;
 
   // const signatureCode = document.querySelector("#signatureCode");
   // const signatureWysiwyg = document.querySelector("#signatureWysiwyg");

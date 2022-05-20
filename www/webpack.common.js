@@ -14,16 +14,13 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(scss)$/,
+        test: /\.(css)$/,
         use: [
           {
             loader: "style-loader"
           },
           {
             loader: "css-loader"
-          },
-          {
-            loader: "sass-loader"
           },
           {
             // Run postcss actions
@@ -34,7 +31,10 @@ module.exports = {
               postcssOptions: {
                 // postcss plugins, can be exported to postcss.config.js
                 plugins: () => {
-                  [require("autoprefixer")];
+                  [
+                    require("postcss-import"),
+                    require("autoprefixer"),
+                  ];
                 }
               }
             }
