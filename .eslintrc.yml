@@ -4,8 +4,6 @@ env:
 extends:
   - standard
   - prettier
-plugins:
-  - html
 parserOptions:
   ecmaVersion: latest
   sourceType: module

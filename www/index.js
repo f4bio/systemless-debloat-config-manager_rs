@@ -1,4 +1,4 @@
-import "./style.scss";
+import "./style.css";
 
 import wasmLogo from "./assets/webassembly-icon.svg";
 import rustLogo from "./assets/rust-lang-icon.png";

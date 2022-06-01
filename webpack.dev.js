@@ -1,28 +1,44 @@
 const path = require("path");
-const { merge } = require("webpack-merge");
-const common = require("./webpack.common.js");
+const { SourceMapDevToolPlugin } = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-module.exports = merge(common, {
-  mode: "development",
-  devtool: "inline-source-map",
-  devServer: {
-    static: {
-      directory: path.join(__dirname, "dist")
-    }
+module.exports = {
+  entry: "./www/bootstrap.js",
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
+    clean: true
   },
+  mode: "development",
   module: {
     rules: [
       {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader", "postcss-loader"]
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource"
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset/resource"
+      },
+      {
         test: /\.html$/,
-        use: [
-          {
-            loader: "html-loader"
-          },
-          {
-            loader: "posthtml-loader"
-          }
-        ]
+        use: ["html-loader", "posthtml-loader"]
       }
     ]
-  }
-});
+  },
+  experiments: {
+    asyncWebAssembly: true
+  },
+  plugins: [
+    new SourceMapDevToolPlugin(),
+    new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin({
+      template: "./www/index.html"
+    })
+  ]
+};
