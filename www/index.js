@@ -1,9 +1,12 @@
-import "./style.css";
+import "bootstrap";
 import "@fortawesome/fontawesome-free";
-// import { SignatureTemplate } from "systemless-debloat-config-manager";
+
 import wasmLogo from "./assets/webassembly-icon.svg";
 import rustLogo from "./assets/rust-lang-icon.png";
 import bootstrapLogo from "./assets/bootstrap-icon.svg";
+
+import "./style.css";
+// import { SignatureTemplate } from "systemless-debloat-config-manager";
 
 const doInit = () => {
   document.querySelector("#rustLangIcon").src = rustLogo;
@@ -39,11 +42,11 @@ const doInit = () => {
     navigator.clipboard.writeText(value).then(
       () => {
         /* clipboard successfully set */
-        alert("clipboard successfully set:", value);
+        alert("clipboard successfully set:" + value);
       },
       () => {
         /* clipboard write failed */
-        alert("clipboard write failed :", value);
+        alert("clipboard write failed :" + value);
       }
     );
   };

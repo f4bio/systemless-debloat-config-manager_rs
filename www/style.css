@@ -1,8 +1,6 @@
-@import "bootstrap";
-
 body {
-  text-shadow: 0 0.05rem 0.1rem rgb(0 0 0 / 50%);
-  box-shadow: inset 0 0 5rem rgb(0 0 0 / 50%);
+  text-shadow: .05rem .1rem rgba(107, 113, 127, .8);
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, .33);
 }
 
 .brand-logo {
@@ -24,7 +22,7 @@ body {
 
 .nav-masthead .nav-link {
   color: rgb(255 255 255 / 50%);
-  border-bottom: 0.25rem solid transparent;
+  border-bottom: .25rem solid transparent;
 }
 
 .nav-masthead .nav-link:hover,
@@ -43,8 +41,8 @@ body {
 
 .bd-placeholder-img {
   font-size: 1.125rem;
-  text-anchor: middle;
   user-select: none;
+  text-anchor: middle;
 }
 
 @media (min-width: 768px) {
@@ -58,8 +56,7 @@ body {
   background-color: rgb(0 0 0 / 10%);
   border: solid rgb(0 0 0 / 15%);
   border-width: 1px 0;
-  box-shadow: inset 0 0.5em 1.5em rgb(0 0 0 / 10%),
-  inset 0 0.125em 0.5em rgb(0 0 0 / 15%);
+  box-shadow: inset 0 .5em 1.5em rgb(0 0 0 / 10%), inset 0 .125em .5em rgb(0 0 0 / 15%);
 }
 
 .b-example-vr {
@@ -69,7 +66,7 @@ body {
 }
 
 .bi {
-  vertical-align: -0.125em;
+  vertical-align: -.125em;
   fill: currentcolor;
 }
 

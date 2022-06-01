@@ -6,8 +6,23 @@ module.exports = merge(common, {
   mode: "development",
   devtool: "inline-source-map",
   devServer: {
-    // static: {
-    //   directory: path.join(__dirname, "dist")
-    // }
+    static: {
+      directory: path.join(__dirname, "dist")
+    }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader",
+          },
+          {
+            loader: "posthtml-loader"
+          }
+        ]
+      },
+    ]
   }
 });

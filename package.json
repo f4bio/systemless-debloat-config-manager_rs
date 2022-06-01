@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "sass": "^1.52.1",
+    "sass-loader": "^13.0.0",
+    "webpack": "^5.72.1"
+  },
+  "dependencies": {
+    "svgo": "^2.8.0"
+  }
+}

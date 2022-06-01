@@ -3,6 +3,7 @@ const { SourceMapDevToolPlugin } = require("webpack");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// const WebpackPwaManifest = require("webpack-pwa-manifest");
 
 module.exports = {
   entry: "./bootstrap.js",
@@ -28,19 +29,12 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpe?g|webp|git|svg|)$/i,
-        use: [
-          {
-            loader: "img-optimize-loader"
-          }
-        ]
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        type: "asset"
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        loader: "file-loader",
-        options: {
-          outputPath: "fonts"
-        }
+        loader: "file-loader"
       }
     ]
   },
