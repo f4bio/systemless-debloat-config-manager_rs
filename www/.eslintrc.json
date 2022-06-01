@@ -20,5 +20,8 @@
             "modules": true
         }
     },
-    "plugins": ["unused-imports", "html", "php-markup"]
+    "plugins": [
+      "unused-imports",
+      "html"
+    ]
 }

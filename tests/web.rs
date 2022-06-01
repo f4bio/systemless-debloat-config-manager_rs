@@ -38,5 +38,8 @@ pub fn test_new() {
 
     // Call `tick` and then see if the cells in the `Universe`s are the same.
     // input_universe.tick();
-    assert_eq!(&input_object.get_template_string(), &expected_object.get_template_string());
+    assert_eq!(
+        &input_object.get_template_string(),
+        &expected_object.get_template_string()
+    );
 }

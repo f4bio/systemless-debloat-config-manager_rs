@@ -1,4 +1,5 @@
 import "./style.css";
+import "@fortawesome/fontawesome-free";
 // import { SignatureTemplate } from "systemless-debloat-config-manager";
 import wasmLogo from "./assets/webassembly-icon.svg";
 import rustLogo from "./assets/rust-lang-icon.png";
