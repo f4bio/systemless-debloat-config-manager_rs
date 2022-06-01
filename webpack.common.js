@@ -1,30 +1,35 @@
-const path = require("path");
+// const path = require("path");
 const { SourceMapDevToolPlugin } = require("webpack");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+// const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const WebpackPwaManifest = require("webpack-pwa-manifest");
 
 module.exports = {
-  entry: "./bootstrap.js",
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "bootstrap.js"
-  },
+  entry: "./index.js",
   mode: "none",
   module: {
     rules: [
       {
-        test: /\.(css)$/,
+        test: /\.(scss)$/,
         use: [
           {
+            // inject CSS to page
             loader: "style-loader"
           },
           {
+            loader: MiniCssExtractPlugin.loader
+          },
+          {
+            // translates CSS into CommonJS modules
             loader: "css-loader"
           },
           {
+            // Run postcss actions
             loader: "postcss-loader"
+          },
+          {
+            loader: "sass-loader"
           }
         ]
       },
@@ -43,7 +48,7 @@ module.exports = {
   },
   plugins: [
     new SourceMapDevToolPlugin(),
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       template: "index.html"

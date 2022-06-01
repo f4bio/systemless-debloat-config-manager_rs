@@ -1,11 +1,8 @@
-import "bootstrap";
-import "@fortawesome/fontawesome-free";
+import "./style.scss";
 
 import wasmLogo from "./assets/webassembly-icon.svg";
 import rustLogo from "./assets/rust-lang-icon.png";
 import bootstrapLogo from "./assets/bootstrap-icon.svg";
-
-import "./style.css";
 // import { SignatureTemplate } from "systemless-debloat-config-manager";
 
 const doInit = () => {
@@ -24,7 +21,6 @@ const doInit = () => {
     // const phone = document.getElementById("phone").value;
     // const email = document.getElementById("email").value;
     // const website = document.getElementById("website").value;
-
     // const result = signatureTemplate.interpolate(
     //   name,
     //   position,
@@ -32,7 +28,6 @@ const doInit = () => {
     //   email,
     //   website
     // );
-
     // signatureCode.querySelector("code").textContent = result;
     // signatureWysiwyg.innerHTML = result;
   };
