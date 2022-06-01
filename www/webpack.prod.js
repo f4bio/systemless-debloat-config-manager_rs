@@ -18,7 +18,7 @@ module.exports = merge(common, {
             loader: "posthtml-loader"
           }
         ]
-      },
+      }
     ]
   },
   optimization: {
@@ -34,7 +34,24 @@ module.exports = merge(common, {
               ["gifsicle", { interlaced: true }],
               ["jpegtran", { progressive: true }],
               ["optipng", { optimizationLevel: 5 }],
-              ["svgo"]
+              // Svgo configuration here https://github.com/svg/svgo#configuration
+              [
+                "svgo",
+                {
+                  plugins: extendDefaultPlugins([
+                    {
+                      name: "removeViewBox",
+                      active: false
+                    },
+                    {
+                      name: "addAttributesToSVGElement",
+                      params: {
+                        attributes: [{ xmlns: "http://www.w3.org/2000/svg" }]
+                      }
+                    }
+                  ])
+                }
+              ]
             ]
           }
         }
