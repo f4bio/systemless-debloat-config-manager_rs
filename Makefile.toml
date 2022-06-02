@@ -7,23 +7,23 @@ args = ["fmt", "--", "--emit=files"]
 command = "cargo"
 args = ["clean"]
 
-[tasks.build]
-command = "cargo"
-args = ["build"]
-dependencies = ["clean"]
-
 [tasks.build-wasm]
 script = ["wasm-pack build"]
 
 [tasks.build-www]
-script = ["cd ./www", "npm run build"]
+script = ["npm run build"]
+
+[tasks.build]
+command = "cargo"
+args = ["build"]
+dependencies = ["clean", "build-wasm", "build-www"]
 
 [tasks.serve-www]
-script = ["cd ./www", "npm run serve"]
+script = ["npm run serve"]
 dependencies = ["format", "build", "test"]
 
 [tasks.dev]
-script = ["cd ./www", "npm run serve:dev"]
+script = ["npm run serve:dev"]
 dependencies = ["build-wasm"]
 
 [tasks.test]

@@ -4,7 +4,7 @@ version = "0.0.1"
 authors = ["Fabio Tea <iam@f4b.io>"]
 edition = "2018"
 description = ""
-repository = "https://gitlab.com/f4b.io/systemless-debloat-config-manager_rs.git"
+repository = "https://github.com/f4bio/systemless-debloat-config-manager_rs.git"
 license = "AGPL"
 publish = false
 
@@ -36,9 +36,7 @@ wee_alloc = { version = "0.4.5", optional = true }
 
 [dependencies.web-sys]
 version = "0.3.57"
-features = [
-    "console",
-]
+features = ["console"]
 
 [dev-dependencies]
 wasm-bindgen-test = "0.3.30"
