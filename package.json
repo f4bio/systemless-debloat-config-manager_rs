@@ -9,6 +9,11 @@
     "serve": "npm run serve:dev",
     "serve:dev": "export NODE_OPTIONS=--openssl-legacy-provider && npx webpack serve"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/f4bio/systemless-debloat-config-manager_rs.git",
+    "serve:dev": "export NODE_OPTIONS=--openssl-legacy-provider && npx webpack serve"
+  },
   "keywords": [
     "js",
     "javascript",
@@ -17,6 +22,13 @@
     "scss"
   ],
   "author": "Fabio Tea <iam@f4b.io>",
+  "bugs": {
+    "url": "https://github.com/f4bio/systemless-debloat-config-manager_rs/issues"
+  },
+  "homepage": "https://github.com/f4bio/systemless-debloat-config-manager_rs#readme",
+  "dependencies": {
+    "systemless-debloat-config-manager": "file:./pkg"
+  },
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.14.6",
