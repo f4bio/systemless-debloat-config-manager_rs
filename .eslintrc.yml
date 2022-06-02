@@ -11,3 +11,4 @@ rules:
   comma-dangle:
     - error
     - never
+  dot-notation: off

@@ -1,25 +1,12 @@
-// import "./style.css";
+import "bootstrap";
+import "@fortawesome/fontawesome-free";
+import "@fontsource/fira-mono";
 
 import wasmLogo from "./assets/webassembly-icon.svg";
 import rustLogo from "./assets/rust-lang-icon.png";
 import bootstrapLogo from "./assets/bootstrap-icon.svg";
 
-// import { SignatureTemplate } from "systemless-debloat-config-manager";
-
-function readFile(input) {
-  let file = input.files[0];
-  let reader = new FileReader();
-
-  reader.readAsText(file);
-
-  reader.onload = function () {
-    console.log(reader.result);
-  };
-
-  reader.onerror = function () {
-    console.log(reader.error);
-  };
-}
+import { ConfigHandler } from "systemless-debloat-config-manager";
 
 const doInit = () => {
   document.querySelector("#rustLangIcon").src = rustLogo;
@@ -32,15 +19,16 @@ const doInit = () => {
 
   // eslint-disable-next-line no-unused-vars
   const doUpdate = () => {
-    const fileUploadForm = document.getElementById("fileUploadForm");
     const selectFile = document.getElementById("selectFile");
     // const startButton = document.getElementById("startButton");
+
+    ConfigHandler.new();
 
     selectFile.addEventListener("change", (event) => {
       const selectedFileList = event.target["files"];
       console.log("selectedFileList:", selectedFileList);
 
-      let reader = new FileReader();
+      const reader = new FileReader();
       reader.readAsText(selectedFileList.item(0));
 
       reader.onload = function () {

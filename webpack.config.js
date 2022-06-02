@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin");
 
 module.exports = {
   mode: "development",
@@ -12,14 +13,20 @@ module.exports = {
     clean: true
   },
   plugins: [
+    new WasmPackPlugin({
+      crateDirectory: path.resolve(__dirname, ".")
+    }),
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
-      template: "./www/index.html"
+      template: path.resolve(__dirname, "www", "index.html")
       // minify: {
       //   collapseWhitespace: !devMode
       // }
     })
   ],
+  experiments: {
+    asyncWebAssembly: true
+  },
   module: {
     rules: [
       {

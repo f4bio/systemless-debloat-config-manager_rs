@@ -1,7 +1,6 @@
 extern crate web_sys;
 
 use serde::Serialize;
-use tera::{Context, Tera};
 use wasm_bindgen::prelude::*;
 
 mod utils;
@@ -13,8 +12,8 @@ mod utils;
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
 #[wasm_bindgen]
-pub struct PrepareConfig {
-  template_string: String,
+pub struct ConfigHandler {
+  config_string: String,
 }
 
 #[wasm_bindgen]
@@ -31,66 +30,80 @@ pub struct User {
   position: String,
 }
 
+// First up let's take a look of binding `console.log` manually, without the
+// help of `web_sys`. Here we're writing the `#[wasm_bindgen]` annotations
+// manually ourselves, and the correctness of our program relies on the
+// correctness of these annotations!
+
 #[wasm_bindgen]
 extern "C" {
   fn alert(s: &str);
+  // Use `js_namespace` here to bind `console.log(..)` instead of just
+  // `log(..)`
+  #[wasm_bindgen(js_namespace = console)]
+  fn log(s: &str);
+
+  // The `console.log` is quite polymorphic, so we can bind it with multiple
+  // signatures. Note that we need to use `js_name` to ensure we always call
+  // `log` in JS.
+  #[wasm_bindgen(js_namespace = console, js_name = log)]
+  fn log_u32(a: u32);
+
+  // Multiple arguments too!
+  #[wasm_bindgen(js_namespace = console, js_name = log)]
+  fn log_many(a: &str, b: &str);
 }
 
-// A macro to provide `println!(..)`-style syntax for `console.log` logging.
-// macro_rules! log {
-//     ( $( $t:tt )* ) => {
-//         web_sys::console::log_1(&format!( $( $t )* ).into());
-//     }
-// }
+// Next let's define a macro that's like `println!`, only it works for
+// `console.log`. Note that `println!` doesn't actually work on the wasm target
+// because the standard library currently just eats all output. To get
+// `println!`-like behavior in your app you'll likely want a macro like this.
+macro_rules! console_log {
+    // Note that this is using the `log` function imported above during
+    // `bare_bones`
+    ($($t:tt)*) => (log(&format_args!($($t)*).to_string()))
+}
+
+// Called by our JS entry point to run the example
+#[wasm_bindgen(start)]
+pub fn run() -> Result<(), JsValue> {
+  log("Hello from Rust!");
+
+  // Use `web_sys`'s global `window` function to get a handle on the global
+  // window object.
+  let window = web_sys::window().expect("no global `window` exists");
+  let document = window.document().expect("should have a document on window");
+  let body = document.body().expect("document should have a body");
+
+  console_log!("Hello {}!", "world");
+
+  // Manufacture the element we're gonna append
+  let val = document.create_element("p")?;
+  val.set_text_content(Some("Hello from Rust!"));
+
+  body.append_child(&val)?;
+
+  Ok(())
+}
 
 #[wasm_bindgen]
-impl PrepareConfig {
-  pub fn new() -> PrepareConfig {
+impl ConfigHandler {
+  pub fn new() -> ConfigHandler {
     utils::set_panic_hook();
 
-    PrepareConfig {
-      template_string: utils::get_template(),
+    ConfigHandler {
+      config_string: utils::get_template(),
     }
   }
 
   pub fn get_template_string(&self) -> String {
-    String::from(&self.template_string)
+    String::from(&self.config_string)
   }
 
-  pub fn interpolate(
-    &self,
-    name: &str,
-    position: &str,
-    phone_input: &str,
-    email_input: &str,
-    website_input: &str,
-  ) -> String {
-    let user = User {
-      name: name.to_string(),
-      position: position.to_string(),
-    };
+  pub fn prepare(&self, data: &str) -> String {
+    let prepared_data = data.replace("{", "{{").replace("}", "}}");
+    console_log!("prepared data: {}", prepared_data);
 
-    let phone = Link {
-      pretty: phone_input.to_string(),
-      url: format!("tel:+49{}", phone_input.to_string()),
-    };
-
-    let email = Link {
-      pretty: email_input.to_string(),
-      url: format!("mailto:{}", email_input.to_string()),
-    };
-
-    let website = Link {
-      pretty: website_input.to_string(),
-      url: format!("https://www.{}", website_input),
-    };
-
-    let mut context = Context::new();
-    context.insert("user", &user);
-    context.insert("phone", &phone);
-    context.insert("email", &email);
-    context.insert("website", &website);
-
-    Tera::one_off(self.get_template_string().as_str(), &context, false).unwrap()
+    prepared_data
   }
 }
