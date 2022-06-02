@@ -30,12 +30,9 @@
     "url": "https://github.com/f4bio/systemless-debloat-config-manager_rs/issues"
   },
   "homepage": "https://github.com/f4bio/systemless-debloat-config-manager_rs#readme",
-  "dependencies": {
-    "@wasm-tool/wasm-pack-plugin": "^1.6.0",
-    "systemless-debloat-config-manager": "file:./pkg"
-  },
   "license": "MIT",
   "devDependencies": {
+    "@wasm-tool/wasm-pack-plugin": "^1.6.0",
     "@babel/core": "^7.18.2",
     "@babel/preset-env": "^7.18.2",
     "@fontsource/fira-mono": "^4.5.8",

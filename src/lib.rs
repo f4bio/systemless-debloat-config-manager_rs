@@ -89,6 +89,8 @@ pub fn run() -> Result<(), JsValue> {
 #[wasm_bindgen]
 impl ConfigHandler {
   pub fn new() -> ConfigHandler {
+    console_log!("hello wasm!");
+
     utils::set_panic_hook();
 
     ConfigHandler {

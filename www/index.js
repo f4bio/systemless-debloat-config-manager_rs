@@ -7,7 +7,7 @@ import wasmLogo from "./assets/webassembly-icon.svg";
 import rustLogo from "./assets/rust-lang-icon.png";
 import bootstrapLogo from "./assets/bootstrap-icon.svg";
 
-import { ConfigHandler } from "systemless-debloat-config-manager";
+import { ConfigHandler } from "../pkg";
 
 const doInit = () => {
   document.querySelector("#rustLangIcon").src = rustLogo;
@@ -60,11 +60,11 @@ const doInit = () => {
 };
 
 if (document.readyState !== "loading") {
-  console.log("document is already ready, just execute code here");
+  // console.log("document is already ready, just execute code here");
   doInit();
 } else {
   document.addEventListener("DOMContentLoaded", () => {
-    console.log("document was not ready, place code here");
+    // console.log("document was not ready, place code here");
     doInit();
   });
 }

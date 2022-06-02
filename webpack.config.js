@@ -14,7 +14,7 @@ module.exports = {
   },
   plugins: [
     new WasmPackPlugin({
-      crateDirectory: path.resolve(__dirname, ".")
+      crateDirectory: path.resolve(__dirname)
     }),
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
