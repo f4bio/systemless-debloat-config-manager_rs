@@ -3,7 +3,23 @@
 import wasmLogo from "./assets/webassembly-icon.svg";
 import rustLogo from "./assets/rust-lang-icon.png";
 import bootstrapLogo from "./assets/bootstrap-icon.svg";
+
 // import { SignatureTemplate } from "systemless-debloat-config-manager";
+
+function readFile(input) {
+  let file = input.files[0];
+  let reader = new FileReader();
+
+  reader.readAsText(file);
+
+  reader.onload = function () {
+    console.log(reader.result);
+  };
+
+  reader.onerror = function () {
+    console.log(reader.error);
+  };
+}
 
 const doInit = () => {
   document.querySelector("#rustLangIcon").src = rustLogo;
@@ -16,20 +32,25 @@ const doInit = () => {
 
   // eslint-disable-next-line no-unused-vars
   const doUpdate = () => {
-    // const name = document.getElementById("name").value;
-    // const position = document.getElementById("position").value;
-    // const phone = document.getElementById("phone").value;
-    // const email = document.getElementById("email").value;
-    // const website = document.getElementById("website").value;
-    // const result = signatureTemplate.interpolate(
-    //   name,
-    //   position,
-    //   phone,
-    //   email,
-    //   website
-    // );
-    // signatureCode.querySelector("code").textContent = result;
-    // signatureWysiwyg.innerHTML = result;
+    const fileUploadForm = document.getElementById("fileUploadForm");
+    const selectFile = document.getElementById("selectFile");
+    // const startButton = document.getElementById("startButton");
+
+    selectFile.addEventListener("change", (event) => {
+      const selectedFileList = event.target["files"];
+      console.log("selectedFileList:", selectedFileList);
+
+      let reader = new FileReader();
+      reader.readAsText(selectedFileList.item(0));
+
+      reader.onload = function () {
+        console.log("file content:", reader.result);
+      };
+
+      reader.onerror = function () {
+        console.error("error reading file contents:", reader.error);
+      };
+    });
   };
 
   // eslint-disable-next-line no-unused-vars
@@ -46,27 +67,6 @@ const doInit = () => {
     );
   };
 
-  // document.querySelector("#copy2clipboard").addEventListener("click", () => {
-  //   setClipboard(signatureCode.querySelector("code").textContent);
-  // });
-
-  // document.querySelector("#code").addEventListener("click", () => {
-  //   signatureWysiwyg.classList.add("hidden");
-  //   signatureCode.classList.remove("hidden");
-  // });
-
-  // document.querySelector("#wysiwyg").addEventListener("click", () => {
-  //   signatureWysiwyg.classList.remove("hidden");
-  //   signatureCode.classList.add("hidden");
-  // });
-
-  // document.querySelectorAll(".default-text-input").forEach((inputElement) => {
-  //   inputElement.addEventListener("input", () => {
-  //     doUpdate();
-  //   });
-  // });
-
-  // signatureCode.classList.remove("hidden");
   doUpdate();
 };
 
