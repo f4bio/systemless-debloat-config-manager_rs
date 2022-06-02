@@ -2,6 +2,7 @@ import "bootstrap";
 import "@fortawesome/fontawesome-free";
 import "@fontsource/fira-mono";
 
+import "./assets/placeholder-loading.svg";
 import wasmLogo from "./assets/webassembly-icon.svg";
 import rustLogo from "./assets/rust-lang-icon.png";
 import bootstrapLogo from "./assets/bootstrap-icon.svg";
