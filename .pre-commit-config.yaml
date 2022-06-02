@@ -37,6 +37,21 @@ repos:
     rev: v2.6.2
     hooks:
       - id: prettier
+  #  - repo: https://github.com/awebdeveloper/pre-commit-stylelint
+  #    rev: 0.0.2
+  #    hooks:
+  #      - id: stylelint
+  #        additional_dependencies:
+  #          [
+  #            "stylelint",
+  #            "stylelint-config-standard",
+  #            "stylelint-config-prettier"
+  #          ]
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: v8.16.0
+    hooks:
+      - id: eslint
+        additional_dependencies: ["eslint", "eslint-config-prettier"]
   - repo: https://github.com/doublify/pre-commit-rust
     rev: v1.0
     hooks:
