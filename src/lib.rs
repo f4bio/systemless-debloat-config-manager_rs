@@ -82,7 +82,8 @@ pub fn main_js() -> Result<(), JsValue> {
 impl ConfigHandler {
   pub fn load_config(&self, data: &str) -> String {
     let prepared_data = data.replace("{", "{{").replace("}", "}}");
-    console_log!("prepared data: {}", prepared_data);
+    let log_message = format!("prepared data: {}", prepared_data.as_str());
+    console::log_1(&JsValue::from_str(log_message.as_str()));
 
     prepared_data
   }
