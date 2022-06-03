@@ -5,7 +5,10 @@ const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: ["./www/bootstrap.js", "./www/style.css"],
+  entry: [
+    path.resolve(__dirname, "www", "index.js"),
+    path.resolve(__dirname, "www", "style.css")
+  ],
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",

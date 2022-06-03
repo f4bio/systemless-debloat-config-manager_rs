@@ -1,39 +1,27 @@
 extern crate web_sys;
 
-use serde::Serialize;
 use wasm_bindgen::prelude::*;
+use web_sys::console;
 
-mod utils;
+#[wasm_bindgen]
+pub struct ConfigHandler {}
+
+pub fn set_panic_hook() {
+  // When the `console_error_panic_hook` feature is enabled, we can call the
+  // `set_panic_hook` function at least once during initialization, and then
+  // we will get better error messages if our code ever panics.
+  //
+  // For more details see
+  // https://github.com/rustwasm/console_error_panic_hook#readme
+  #[cfg(feature = "console_error_panic_hook")]
+  console_error_panic_hook::set_once();
+}
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
 // allocator.
 #[cfg(feature = "wee_alloc")]
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
-
-#[wasm_bindgen]
-pub struct ConfigHandler {
-  config_string: String,
-}
-
-#[wasm_bindgen]
-#[derive(Serialize)]
-pub struct Link {
-  pretty: String,
-  url: String,
-}
-
-#[wasm_bindgen]
-#[derive(Serialize)]
-pub struct User {
-  name: String,
-  position: String,
-}
-
-// First up let's take a look of binding `console.log` manually, without the
-// help of `web_sys`. Here we're writing the `#[wasm_bindgen]` annotations
-// manually ourselves, and the correctness of our program relies on the
-// correctness of these annotations!
 
 #[wasm_bindgen]
 extern "C" {
@@ -64,45 +52,35 @@ macro_rules! console_log {
     ($($t:tt)*) => (log(&format_args!($($t)*).to_string()))
 }
 
-// Called by our JS entry point to run the example
+// This is like the `main` function, except for JavaScript.
 #[wasm_bindgen(start)]
-pub fn run() -> Result<(), JsValue> {
-  log("Hello from Rust!");
+pub fn main_js() -> Result<(), JsValue> {
+  // This provides better error messages in debug mode.
+  // It's disabled in release mode so it doesn't bloat up the file size.
+  #[cfg(debug_assertions)]
+  console_error_panic_hook::set_once();
+
+  // Your code goes here!
+  console::log_1(&JsValue::from_str("Hello wasm!"));
 
   // Use `web_sys`'s global `window` function to get a handle on the global
   // window object.
-  let window = web_sys::window().expect("no global `window` exists");
-  let document = window.document().expect("should have a document on window");
-  let body = document.body().expect("document should have a body");
-
-  console_log!("Hello {}!", "world");
-
+  // let window = web_sys::window().expect("no global `window` exists");
+  // let document = window.document().expect("should have a document on window");
+  // let body = document.body().expect("document should have a body");
+  //
   // Manufacture the element we're gonna append
-  let val = document.create_element("p")?;
-  val.set_text_content(Some("Hello from Rust!"));
-
-  body.append_child(&val)?;
+  // let val = document.create_element("p")?;
+  // val.set_text_content(Some("Hello from Rust!"));
+  //
+  // body.append_child(&val)?;
 
   Ok(())
 }
 
 #[wasm_bindgen]
 impl ConfigHandler {
-  pub fn new() -> ConfigHandler {
-    console_log!("hello wasm!");
-
-    utils::set_panic_hook();
-
-    ConfigHandler {
-      config_string: utils::get_template(),
-    }
-  }
-
-  pub fn get_template_string(&self) -> String {
-    String::from(&self.config_string)
-  }
-
-  pub fn prepare(&self, data: &str) -> String {
+  pub fn load_config(&self, data: &str) -> String {
     let prepared_data = data.replace("{", "{{").replace("}", "}}");
     console_log!("prepared data: {}", prepared_data);
 
