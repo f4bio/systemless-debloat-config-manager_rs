@@ -12,8 +12,6 @@ const doInit = () => {
   document.querySelector("#webassemblyIcon").src = wasmLogo;
   document.querySelector("#bootstrapIcon").src = bootstrapLogo;
 
-  import("../pkg");
-
   // const signatureCode = document.querySelector("#signatureCode");
   // const signatureWysiwyg = document.querySelector("#signatureWysiwyg");
   // const signatureTemplate = SignatureTemplate.new();
@@ -25,23 +23,26 @@ const doInit = () => {
 
   // const selectFile = document.getElementById("selectFile");
   // const startButton = document.getElementById("startButton");
+  const rust = import("../pkg");
+  const selectFile = document.getElementById("selectFile");
 
-  // selectFile.addEventListener("change", (event) => {
-  //   const selectedFileList = event.target["files"];
-  //   console.log("selectedFileList:", selectedFileList);
-  //
-  //   const reader = new FileReader();
-  //   reader.readAsText(selectedFileList.item(0));
-  //
-  //   reader.onload = function () {
-  //     console.log("file content:", reader.result);
-  //   };
-  //
-  //   reader.onerror = function () {
-  //     console.error("error reading file contents:", reader.error);
-  //   };
-  // });
-  // };
+  selectFile.addEventListener("change", (event) => {
+    const selectedFileList = event.target["files"];
+    console.log("selectedFileList:", selectedFileList);
+
+    const reader = new FileReader();
+    reader.readAsText(selectedFileList.item(0));
+
+    reader.onload = function () {
+      console.log("file content:", reader.result);
+
+      rust.then((m) => m.run()).catch(console.error);
+    };
+
+    reader.onerror = function () {
+      console.error("error reading file contents:", reader.error);
+    };
+  });
 
   // eslint-disable-next-line no-unused-vars
   // const setClipboard = (value) => {

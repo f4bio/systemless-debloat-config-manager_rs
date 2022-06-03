@@ -1,6 +1,5 @@
 extern crate web_sys;
 
-use gloo::{events::EventListener, timers::callback::Timeout};
 use wasm_bindgen::prelude::*;
 
 mod parser;
@@ -41,29 +40,49 @@ macro_rules! console_log {
     ($($t:tt)*) => (log(&format_args!($($t)*).to_string()))
 }
 
+#[wasm_bindgen]
+pub fn parse(data: String) -> Result<(), web_sys::ErrorEvent> {
+  console_log!("parsing: {:?}", data);
+
+  Ok(())
+}
+
 // This is like the `main` function, except for JavaScript.
 #[wasm_bindgen(start)]
 pub fn run() -> Result<(), JsValue> {
-  // This provides better error messages in debug mode.
-  // It's disabled in release mode so it doesn't bloat up the file size.
-  #[cfg(debug_assertions)]
-  console_error_panic_hook::set_once();
+  utils::set_panic_hook();
 
   console_log!("Hello wasm from macro!");
 
+  // TODO:
   // Use `web_sys`'s global `window` function to get a handle on the global
   // window object.
-  let window: web_sys::Window = web_sys::window().expect("no global `window` exists");
-  let document: web_sys::Document = window.document().expect("should have a document on window");
+  // let window: web_sys::Window = web_sys::window().expect("no global `window` exists");
+  // let document: web_sys::Document = window.document().expect("should have a document on window");
   // let body = document.body().expect("document should have a body");
 
-  let file_select_input: web_sys::Element = document.get_element_by_id("selectFile").unwrap_throw();
-  console_log!("file_select_input: {}", "file_select_input");
-
-  let on_down = EventListener::new(&file_select_input, "click", move |_event| {
-    console_log!("file_select_input click");
-  });
-  on_down.forget();
+  // let file_select_input: web_sys::Element = document.get_element_by_id("selectFile").unwrap_throw();
+  // let on_change = EventListener::new(&file_select_input, "change", move |_event| {
+  //   console_log!("file_select_input changed");
+  //
+  //   let event: &JsValue = _event.dyn_ref::<JsValue>().unwrap_throw();
+  //   console_log!("event: {:?}", event);
+  //
+  // EventTarget { obj: Object { obj: JsValue(HTMLInputElement) } }
+  // let element: HtmlInputElement = _event
+  //   .target()
+  //   .unwrap()
+  //   .dyn_into::<HtmlInputElement>()
+  //   .unwrap();
+  // console_log!("element: {:?}", element);
+  // });
+  // on_change.forget();
+  //
+  // let input_form: web_sys::Element = document.get_element_by_id("fileInputForm").unwrap_throw();
+  // let on_submit = EventListener::new(&input_form, "submit", move |_event| {
+  //   console_log!("input_form submitted");
+  // });
+  // on_submit.forget();
 
   // let body = document.body().expect("document should have a body");
   //

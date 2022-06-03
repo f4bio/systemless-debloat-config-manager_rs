@@ -4,8 +4,6 @@ env:
 extends:
   - standard
   - prettier
-  - plugin:prettier/recommended
-  - plugin:css/recommended
 plugins:
   - html
   - css

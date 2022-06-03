@@ -17,13 +17,17 @@ default = ["console_error_panic_hook"]
 [dependencies]
 lazy_static = "1.4.0"
 wasm-bindgen = "0.2.80"
+js-sys = "0.3.32"
 nom = "7.1.1"
 getrandom = { version = "0.2.6", features = ["js"] }
 gloo = "0.7.0"
+wasm-bindgen-futures = "0.4.30"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
 
 # The `console_error_panic_hook` crate provides better debugging of panics by
 # logging them with `console.error`. This is great for development, but requires
-# all the `std::fmt` and `std::panicking` infrastructure, so isn't great for
+# all the `std::fmt` and `std::panicking` infrastructure, so isn"t great for
 # code size when deploying.
 console_error_panic_hook = { version = "0.1.7", optional = true }
 
@@ -37,15 +41,21 @@ wee_alloc = { version = "0.4.5", optional = true }
 [dependencies.web-sys]
 version = "0.3.57"
 features = [
-    "console",
     "Document",
-    "DomImplementation",
-    "EventTarget",
-    "EventListener",
     "Element",
+    "CssStyleDeclaration",
     "HtmlElement",
+    "HtmlParagraphElement",
+    "HtmlTextAreaElement",
     "Node",
-    "Window"
+    "Window",
+    "console",
+    "File",
+    "FileList",
+    "Event",
+    "EventTarget",
+    "Blob",
+    "BlobEvent"
 ]
 
 [dev-dependencies]
