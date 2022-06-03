@@ -12,50 +12,52 @@ const doInit = () => {
   document.querySelector("#webassemblyIcon").src = wasmLogo;
   document.querySelector("#bootstrapIcon").src = bootstrapLogo;
 
+  import("../pkg");
+
   // const signatureCode = document.querySelector("#signatureCode");
   // const signatureWysiwyg = document.querySelector("#signatureWysiwyg");
   // const signatureTemplate = SignatureTemplate.new();
 
   // eslint-disable-next-line no-unused-vars
-  const doUpdate = () => {
-    const rust = import("../pkg");
-    rust.then((m) => m.run()).catch(console.error);
+  // const doUpdate = () => {
+  // const rust = import("../pkg");
+  // rust.then((m) => m.run()).catch(console.error);
 
-    const selectFile = document.getElementById("selectFile");
-    // const startButton = document.getElementById("startButton");
+  // const selectFile = document.getElementById("selectFile");
+  // const startButton = document.getElementById("startButton");
 
-    selectFile.addEventListener("change", (event) => {
-      const selectedFileList = event.target["files"];
-      console.log("selectedFileList:", selectedFileList);
-
-      const reader = new FileReader();
-      reader.readAsText(selectedFileList.item(0));
-
-      reader.onload = function () {
-        console.log("file content:", reader.result);
-      };
-
-      reader.onerror = function () {
-        console.error("error reading file contents:", reader.error);
-      };
-    });
-  };
+  // selectFile.addEventListener("change", (event) => {
+  //   const selectedFileList = event.target["files"];
+  //   console.log("selectedFileList:", selectedFileList);
+  //
+  //   const reader = new FileReader();
+  //   reader.readAsText(selectedFileList.item(0));
+  //
+  //   reader.onload = function () {
+  //     console.log("file content:", reader.result);
+  //   };
+  //
+  //   reader.onerror = function () {
+  //     console.error("error reading file contents:", reader.error);
+  //   };
+  // });
+  // };
 
   // eslint-disable-next-line no-unused-vars
-  const setClipboard = (value) => {
-    navigator.clipboard.writeText(value).then(
-      () => {
-        /* clipboard successfully set */
-        alert("clipboard successfully set:" + value);
-      },
-      () => {
-        /* clipboard write failed */
-        alert("clipboard write failed :" + value);
-      }
-    );
-  };
-
-  doUpdate();
+  // const setClipboard = (value) => {
+  //   navigator.clipboard.writeText(value).then(
+  //     () => {
+  //       /* clipboard successfully set */
+  //       alert("clipboard successfully set:" + value);
+  //     },
+  //     () => {
+  //       /* clipboard write failed */
+  //       alert("clipboard write failed :" + value);
+  //     }
+  //   );
+  // };
+  //
+  // doUpdate();
 };
 
 if (document.readyState !== "loading") {
