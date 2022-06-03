@@ -40,6 +40,7 @@ features = [
     "console",
     "Document",
     "DomImplementation",
+    "EventTarget",
     "EventListener",
     "Element",
     "HtmlElement",

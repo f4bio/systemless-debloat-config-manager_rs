@@ -1,8 +1,7 @@
 extern crate web_sys;
 
-use gloo::{events, events::EventListener, timers::callback::Timeout};
+use gloo::{events::EventListener, timers::callback::Timeout};
 use wasm_bindgen::prelude::*;
-use web_sys::console;
 
 mod parser;
 mod utils;
@@ -58,15 +57,13 @@ pub fn run() -> Result<(), JsValue> {
   let document: web_sys::Document = window.document().expect("should have a document on window");
   // let body = document.body().expect("document should have a body");
 
-  let file_select_input = document.get_element_by_id("selectFile").unwrap_throw();
-  let on_change = EventListener::new(&file_select_input, "change", move |_event| {
-    // After a one second timeout, update the button's text content.
-    Timeout::new(1_000, move || {
-      console_log!("selectFile clicked");
-    })
-    .forget();
+  let file_select_input: web_sys::Element = document.get_element_by_id("selectFile").unwrap_throw();
+  console_log!("file_select_input: {}", "file_select_input");
+
+  let on_down = EventListener::new(&file_select_input, "click", move |_event| {
+    console_log!("file_select_input click");
   });
-  console_log!("on_change = {:?}", on_change);
+  on_down.forget();
 
   // let body = document.body().expect("document should have a body");
   //
