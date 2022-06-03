@@ -1,21 +1,11 @@
 extern crate web_sys;
 
+use gloo::{events, events::EventListener, timers::callback::Timeout};
 use wasm_bindgen::prelude::*;
 use web_sys::console;
 
-#[wasm_bindgen]
-pub struct ConfigHandler {}
-
-pub fn set_panic_hook() {
-  // When the `console_error_panic_hook` feature is enabled, we can call the
-  // `set_panic_hook` function at least once during initialization, and then
-  // we will get better error messages if our code ever panics.
-  //
-  // For more details see
-  // https://github.com/rustwasm/console_error_panic_hook#readme
-  #[cfg(feature = "console_error_panic_hook")]
-  console_error_panic_hook::set_once();
-}
+mod parser;
+mod utils;
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
 // allocator.
@@ -54,19 +44,30 @@ macro_rules! console_log {
 
 // This is like the `main` function, except for JavaScript.
 #[wasm_bindgen(start)]
-pub fn main_js() -> Result<(), JsValue> {
+pub fn run() -> Result<(), JsValue> {
   // This provides better error messages in debug mode.
   // It's disabled in release mode so it doesn't bloat up the file size.
   #[cfg(debug_assertions)]
   console_error_panic_hook::set_once();
 
-  // Your code goes here!
-  console::log_1(&JsValue::from_str("Hello wasm!"));
+  console_log!("Hello wasm from macro!");
 
   // Use `web_sys`'s global `window` function to get a handle on the global
   // window object.
-  // let window = web_sys::window().expect("no global `window` exists");
-  // let document = window.document().expect("should have a document on window");
+  let window: web_sys::Window = web_sys::window().expect("no global `window` exists");
+  let document: web_sys::Document = window.document().expect("should have a document on window");
+  // let body = document.body().expect("document should have a body");
+
+  let file_select_input = document.get_element_by_id("selectFile").unwrap_throw();
+  let on_change = EventListener::new(&file_select_input, "change", move |_event| {
+    // After a one second timeout, update the button's text content.
+    Timeout::new(1_000, move || {
+      console_log!("selectFile clicked");
+    })
+    .forget();
+  });
+  console_log!("on_change = {:?}", on_change);
+
   // let body = document.body().expect("document should have a body");
   //
   // Manufacture the element we're gonna append
@@ -75,16 +76,7 @@ pub fn main_js() -> Result<(), JsValue> {
   //
   // body.append_child(&val)?;
 
+  // selectFileElement = document("selectFile");
+
   Ok(())
-}
-
-#[wasm_bindgen]
-impl ConfigHandler {
-  pub fn load_config(&self, data: &str) -> String {
-    let prepared_data = data.replace("{", "{{").replace("}", "}}");
-    let log_message = format!("prepared data: {}", prepared_data.as_str());
-    console::log_1(&JsValue::from_str(log_message.as_str()));
-
-    prepared_data
-  }
 }

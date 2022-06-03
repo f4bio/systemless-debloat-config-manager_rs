@@ -7,12 +7,6 @@ import wasmLogo from "./assets/webassembly-icon.svg";
 import rustLogo from "./assets/rust-lang-icon.png";
 import bootstrapLogo from "./assets/bootstrap-icon.svg";
 
-import("../pkg")
-  .then((module) => {
-    module.run();
-  })
-  .catch((e) => console.error("Error importing `index.js`:", e));
-
 const doInit = () => {
   document.querySelector("#rustLangIcon").src = rustLogo;
   document.querySelector("#webassemblyIcon").src = wasmLogo;
@@ -24,6 +18,9 @@ const doInit = () => {
 
   // eslint-disable-next-line no-unused-vars
   const doUpdate = () => {
+    const rust = import("../pkg");
+    rust.then((m) => m.run()).catch(console.error);
+
     const selectFile = document.getElementById("selectFile");
     // const startButton = document.getElementById("startButton");
 
