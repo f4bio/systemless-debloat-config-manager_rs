@@ -28,15 +28,14 @@ const doInit = () => {
 
   selectFile.addEventListener("change", (event) => {
     const selectedFileList = event.target["files"];
-    console.log("selectedFileList:", selectedFileList);
+    // console.log("selectedFileList:", selectedFileList);
 
     const reader = new FileReader();
     reader.readAsText(selectedFileList.item(0));
 
     reader.onload = function () {
-      console.log("file content:", reader.result);
-
-      rust.then((m) => m.run()).catch(console.error);
+      // console.log("file content:", reader.result);
+      rust.then((m) => m.parse(reader.result.toString())).catch(console.error);
     };
 
     reader.onerror = function () {

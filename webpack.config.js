@@ -21,10 +21,8 @@ module.exports = {
     }),
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "www", "index.html")
-      // minify: {
-      //   collapseWhitespace: !devMode
-      // }
+      template: path.resolve(__dirname, "www", "index.html"),
+      favicon: path.resolve(__dirname, "www", "assets", "favicon-32x32.png")
     })
   ],
   experiments: {

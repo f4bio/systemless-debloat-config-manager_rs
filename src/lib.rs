@@ -42,7 +42,17 @@ macro_rules! console_log {
 
 #[wasm_bindgen]
 pub fn parse(data: String) -> Result<(), web_sys::ErrorEvent> {
-  console_log!("parsing: {:?}", data);
+  // let packages: Vec<String> = vec![String::new(); 256];
+  //
+  // for line in data.lines() {
+  //   if line.eq("System apps, not debloated:") {
+  //
+  //     console_log!("{}", line);
+  //   }
+  // }
+  let parsed = parser::find_system_apps(data.as_str()).unwrap();
+  console_log!("parsed.0: {:?}", parsed.0);
+  console_log!("parsed.1: {:?}", parsed.1);
 
   Ok(())
 }
