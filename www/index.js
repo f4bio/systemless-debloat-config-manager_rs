@@ -6,11 +6,22 @@ import "./assets/placeholder-loading.svg";
 import wasmLogo from "./assets/webassembly-icon.svg";
 import rustLogo from "./assets/rust-lang-icon.png";
 import bootstrapLogo from "./assets/bootstrap-icon.svg";
+const rust = import("../pkg");
 
 const doInit = () => {
   document.querySelector("#rustLangIcon").src = rustLogo;
   document.querySelector("#webassemblyIcon").src = wasmLogo;
   document.querySelector("#bootstrapIcon").src = bootstrapLogo;
+
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("/service-worker.js").then(registration => {
+        console.log("SW registered: ", registration);
+      }).catch(registrationError => {
+        console.log("SW registration failed: ", registrationError);
+      });
+    });
+  }
 
   // const signatureCode = document.querySelector("#signatureCode");
   // const signatureWysiwyg = document.querySelector("#signatureWysiwyg");
@@ -23,7 +34,6 @@ const doInit = () => {
 
   // const selectFile = document.getElementById("selectFile");
   // const startButton = document.getElementById("startButton");
-  const rust = import("../pkg");
   const selectFile = document.getElementById("selectFile");
 
   selectFile.addEventListener("change", (event) => {
