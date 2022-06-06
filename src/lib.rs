@@ -1,5 +1,6 @@
 extern crate web_sys;
 
+use regex::RegexSetBuilder;
 use wasm_bindgen::prelude::*;
 
 mod parser;
@@ -40,19 +41,49 @@ macro_rules! console_log {
     ($($t:tt)*) => (log(&format_args!($($t)*).to_string()))
 }
 
+fn find_system_apps(data: String) -> Vec<String> {
+  let mut system_apps: Vec<String> = vec![];
+  let mut eat: bool = false;
+
+  for line in data.lines() {
+    if eat {
+      system_apps.push(String::from(line.clone()))
+    }
+    if line.eq("System apps, not debloated:") && eat == false {
+      eat = true;
+    }
+    if line.eq("") && eat == true {
+      eat = false;
+    }
+  }
+  system_apps
+}
+
+fn find_system_packages(data: String) -> Vec<String> {
+  let mut system_packages: Vec<String> = vec![];
+  let mut eat: bool = false;
+
+  for line in data.lines() {
+    if eat {
+      system_packages.push(String::from(line.clone()))
+    }
+    if line.eq("System packages:") && eat == false {
+      eat = true;
+    }
+    if line.eq("") && eat == true {
+      eat = false;
+    }
+  }
+  system_packages
+}
+
 #[wasm_bindgen]
 pub fn parse(data: String) -> Result<(), web_sys::ErrorEvent> {
-  // let packages: Vec<String> = vec![String::new(); 256];
-  //
-  // for line in data.lines() {
-  //   if line.eq("System apps, not debloated:") {
-  //
-  //     console_log!("{}", line);
-  //   }
-  // }
-  let parsed = parser::find_system_apps(data.as_str()).unwrap();
-  console_log!("parsed.0: {:?}", parsed.0);
-  console_log!("parsed.1: {:?}", parsed.1);
+  let system_apps = find_system_apps(data.clone());
+  let system_packages = find_system_packages(data.clone());
+
+  console_log!("system_apps: {:?}", system_apps);
+  console_log!("system_packages: {:?}", system_packages);
 
   Ok(())
 }
