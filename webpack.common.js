@@ -2,20 +2,13 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin");
-const WorkboxPlugin = require("workbox-webpack-plugin");
 
 module.exports = {
-  mode: "development",
+  mode: "none",
   entry: [
     path.resolve(__dirname, "www", "index.js"),
     path.resolve(__dirname, "www", "style.css")
   ],
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "[name].bundle.js",
-    publicPath: "/",
-    clean: true
-  },
   plugins: [
     new WasmPackPlugin({
       crateDirectory: path.resolve(__dirname)
@@ -24,12 +17,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "www", "index.html"),
       favicon: path.resolve(__dirname, "www", "assets", "favicon-32x32.png")
-    }),
-    new WorkboxPlugin.GenerateSW({
-      // these options encourage the ServiceWorkers to get in there fast
-      // and not allow any straggling "old" SWs to hang around
-      clientsClaim: true,
-      skipWaiting: true
     })
   ],
   experiments: {
