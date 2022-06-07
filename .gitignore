@@ -369,3 +369,5 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,macos,dotenv,windows,intellij,visualstudiocode,rust,node
+
+/webpack.config.dump

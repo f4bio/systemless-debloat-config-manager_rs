@@ -18,7 +18,6 @@ default = ["console_error_panic_hook"]
 lazy_static = "1.4.0"
 wasm-bindgen = "0.2.80"
 js-sys = "0.3.32"
-nom = "7.1.1"
 getrandom = { version = "0.2.6", features = ["js"] }
 gloo = "0.7.0"
 wasm-bindgen-futures = "0.4.30"

@@ -1,9 +1,7 @@
 extern crate web_sys;
 
-use regex::RegexSetBuilder;
 use wasm_bindgen::prelude::*;
 
-mod parser;
 mod utils;
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
@@ -84,6 +82,19 @@ pub fn parse(data: String) -> Result<(), web_sys::ErrorEvent> {
 
   console_log!("system_apps: {:?}", system_apps);
   console_log!("system_packages: {:?}", system_packages);
+
+  let window: web_sys::Window = web_sys::window().expect("no global `window` exists");
+  let document: web_sys::Document = window.document().expect("should have a document on window");
+  let body = document.body().expect("document should have a body");
+
+  let ul_element = document.create_element("ul")?;
+  body.append_child(&ul_element)?;
+
+  system_apps.iter().for_each(|app| {
+    let li_element = document.create_element("li").unwrap();
+    li_element.set_inner_html(app);
+    ul_element.append_child(&li_element).unwrap();
+  });
 
   Ok(())
 }
