@@ -49,6 +49,13 @@ module.exports = {
         }
       },
       {
+        test: /browserconfig\.xml/,
+        type: "asset/resource",
+        generator: {
+          filename: "browserconfig.xml"
+        }
+      },
+      {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"]
       },

@@ -1,7 +1,7 @@
 extern crate web_sys;
 
+use visdom::Vis;
 use wasm_bindgen::prelude::*;
-use web_sys::HtmlElement;
 
 mod utils;
 
@@ -79,91 +79,53 @@ fn find_system_packages(data: String) -> Vec<String> {
 #[wasm_bindgen]
 pub fn parse(data: String) -> Result<(), web_sys::ErrorEvent> {
   let system_apps = find_system_apps(data.clone());
-  let system_packages = find_system_packages(data.clone());
+  // let system_packages = find_system_packages(data.clone());
 
-  console_log!("system_apps: {:?}", system_apps);
-  console_log!("system_packages: {:?}", system_packages);
+  // console_log!("system_apps: {:?}", system_apps);
+  // console_log!("system_packages: {:?}", system_packages);
 
   let window: web_sys::Window = web_sys::window().expect("no global `window` exists");
   let document: web_sys::Document = window.document().expect("should have a document on window");
 
-  let input_container_element: web_sys::Element =
-    document.get_element_by_id("input-container").unwrap();
-  let result_container_element: web_sys::Element =
-    document.get_element_by_id("result-container").unwrap();
+  let root = Vis::load(document.body().unwrap().inner_text())
+    .ok()
+    .unwrap();
+  let mut loading_container_element = root.find("#loading-container");
+  let mut input_container_element = root.find("#input-container");
+  let mut result_container_element = root.find("#result-container");
+  let result_list_element = root.find("#result-list");
 
-  input_container_element.set_class_name("visually-hidden");
-
-  let result_content = result_container_element.last_element_child().unwrap();
-  let ul_element = document.create_element("ul")?;
-  result_content.append_child(&ul_element)?;
+  loading_container_element.add_class("visually-hidden");
+  input_container_element.remove_class("visually-hidden");
+  result_container_element.add_class("visually-hidden");
 
   system_apps.iter().for_each(|app| {
-    // <li class="list-group-item d-flex justify-content-between align-items-start">
-    //     <div class="ms-2 me-auto">
-    //      <div class="fw-bold">Subheading</div>
-    //        Cras justo odio
-    //      </div>
-    //     <span class="badge bg-primary rounded-pill">14</span>
-    // </li>
+    console_log!("system_app: {:?}", app);
 
-    let li_element = document.create_element("li").unwrap();
-    li_element.set_class_name("list-group-item d-flex justify-content-between align-items-start");
-    li_element.set_inner_html(app);
-    ul_element.append_child(&li_element).unwrap();
+    let html = format!(
+      r##"
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+         <div class="fw-bold">Subheading</div>
+         {}
+         </div>
+        <span class="badge bg-primary rounded-pill">14</span>
+        </li>"##,
+      app
+    );
+    let list_item = Vis::load(html).unwrap();
+    result_list_element.children("").add(list_item);
   });
-
-  result_container_element.set_class_name("");
 
   Ok(())
 }
 
 // This is like the `main` function, except for JavaScript.
 #[wasm_bindgen(start)]
-pub fn run() -> Result<(), JsValue> {
+pub fn main() -> Result<(), JsValue> {
   utils::set_panic_hook();
 
   console_log!("Hello wasm from macro!");
-
-  // TODO:
-  // Use `web_sys`'s global `window` function to get a handle on the global
-  // window object.
-  // let window: web_sys::Window = web_sys::window().expect("no global `window` exists");
-  // let document: web_sys::Document = window.document().expect("should have a document on window");
-  // let body = document.body().expect("document should have a body");
-
-  // let file_select_input: web_sys::Element = document.get_element_by_id("selectFile").unwrap_throw();
-  // let on_change = EventListener::new(&file_select_input, "change", move |_event| {
-  //   console_log!("file_select_input changed");
-  //
-  //   let event: &JsValue = _event.dyn_ref::<JsValue>().unwrap_throw();
-  //   console_log!("event: {:?}", event);
-  //
-  // EventTarget { obj: Object { obj: JsValue(HTMLInputElement) } }
-  // let element: HtmlInputElement = _event
-  //   .target()
-  //   .unwrap()
-  //   .dyn_into::<HtmlInputElement>()
-  //   .unwrap();
-  // console_log!("element: {:?}", element);
-  // });
-  // on_change.forget();
-  //
-  // let input_form: web_sys::Element = document.get_element_by_id("fileInputForm").unwrap_throw();
-  // let on_submit = EventListener::new(&input_form, "submit", move |_event| {
-  //   console_log!("input_form submitted");
-  // });
-  // on_submit.forget();
-
-  // let body = document.body().expect("document should have a body");
-  //
-  // Manufacture the element we're gonna append
-  // let val = document.create_element("p")?;
-  // val.set_text_content(Some("Hello from Rust!"));
-  //
-  // body.append_child(&val)?;
-
-  // selectFileElement = document("selectFile");
 
   Ok(())
 }

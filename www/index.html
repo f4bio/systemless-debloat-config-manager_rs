@@ -9,9 +9,9 @@
   <meta name="format-detection" content="telephone=no" />
   <meta name="mobile-web-app-capable" content="yes" />
 
-  <link rel="manifest" href="./manifest.json" />
+  <link rel="manifest" href="manifest.json" />
 
-  <meta name="msapplication-config" content="./browserconfig.xml" />
+  <meta name="msapplication-config" content="browserconfig.xml" />
   <meta name="msapplication-TileColor" content="#1337af" />
   <meta name="msapplication-TileImage" content="./assets/ms-icon-144x144.png" />
 
@@ -29,6 +29,7 @@
 
   <body class="d-flex h-100 text-center text-white bg-dark">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <!--HEADER-->
       <header class="mb-auto">
         <div>
           <h3 class="float-md-start mb-0">Cover</h3>
@@ -42,10 +43,14 @@
           </nav>
         </div>
       </header>
-
-      <main class="px-3">
+      <!--MAIN-->
+      <main class="px-3" id="main-container">
         <!-- input content -->
-        <div id="input-container">
+        <div id="loading-container">
+          Loading...
+        </div>
+        <!-- input content -->
+        <div id="input-container" class="visually-hidden">
           <h1>Input your SystemlessDebloater.log</h1>
           <p class="lead">
             Run SystemlessDebloater at least once. Default location is in your `/sdcard/Download` folder.
@@ -78,12 +83,11 @@
             </form>
           </div>
         </div>
-
         <!-- result content-->
         <div id="result-container" class="visually-hidden">
           <h1>Results</h1>
           <div class="container lead mt-5">
-            <ol class="list-group list-group-numbered">
+            <ol class="list-group list-group-numbered" id="result-list">
               <li class="list-group-item d-flex justify-content-between align-items-start">
                 <div class="ms-2 me-auto">
                   <div class="fw-bold">Subheading</div>
@@ -109,7 +113,7 @@
           </div>
         </div>
       </main>
-
+      <!--FOOTER-->
       <footer class="mt-auto text-white-50 fs-6">
         <p>
           <a
