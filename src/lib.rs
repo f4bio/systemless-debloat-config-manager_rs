@@ -1,6 +1,7 @@
 extern crate web_sys;
 
 use wasm_bindgen::prelude::*;
+use web_sys::HtmlElement;
 
 mod utils;
 
@@ -85,16 +86,34 @@ pub fn parse(data: String) -> Result<(), web_sys::ErrorEvent> {
 
   let window: web_sys::Window = web_sys::window().expect("no global `window` exists");
   let document: web_sys::Document = window.document().expect("should have a document on window");
-  let body = document.body().expect("document should have a body");
 
+  let input_container_element: web_sys::Element =
+    document.get_element_by_id("input-container").unwrap();
+  let result_container_element: web_sys::Element =
+    document.get_element_by_id("result-container").unwrap();
+
+  input_container_element.set_class_name("visually-hidden");
+
+  let result_content = result_container_element.last_element_child().unwrap();
   let ul_element = document.create_element("ul")?;
-  body.append_child(&ul_element)?;
+  result_content.append_child(&ul_element)?;
 
   system_apps.iter().for_each(|app| {
+    // <li class="list-group-item d-flex justify-content-between align-items-start">
+    //     <div class="ms-2 me-auto">
+    //      <div class="fw-bold">Subheading</div>
+    //        Cras justo odio
+    //      </div>
+    //     <span class="badge bg-primary rounded-pill">14</span>
+    // </li>
+
     let li_element = document.create_element("li").unwrap();
+    li_element.set_class_name("list-group-item d-flex justify-content-between align-items-start");
     li_element.set_inner_html(app);
     ul_element.append_child(&li_element).unwrap();
   });
+
+  result_container_element.set_class_name("");
 
   Ok(())
 }

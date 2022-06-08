@@ -1,4 +1,3 @@
-const AppManifestPlugin = require("webpack-web-app-manifest-plugin");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -14,14 +13,6 @@ module.exports = {
       crateDirectory: path.resolve(__dirname)
     }),
     new MiniCssExtractPlugin(),
-    new AppManifestPlugin({
-      content: {
-        name: "SystemlessDebloat Config Manager",
-        short_name: "sdcm",
-        background_color: "#1337af"
-      },
-      destination: "/"
-    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "www", "index.html"),
       favicon: path.resolve(__dirname, "www", "favicon.ico"),
@@ -51,8 +42,11 @@ module.exports = {
         use: ["html-loader", "posthtml-loader"]
       },
       {
-        test: /manifest.json/,
-        use: ["file-loader"]
+        test: /manifest\.json/,
+        type: "asset/resource",
+        generator: {
+          filename: "manifest.json"
+        }
       },
       {
         test: /\.css$/,

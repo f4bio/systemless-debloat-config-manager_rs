@@ -9,10 +9,10 @@
   <meta name="format-detection" content="telephone=no" />
   <meta name="mobile-web-app-capable" content="yes" />
 
-  <link rel="manifest" href="./assets/manifest.json" />
+  <link rel="manifest" href="./manifest.json" />
 
-  <meta name="msapplication-config" content="./assets/browserconfig.xml" />
-  <meta name="msapplication-TileColor" content="#ffffff" />
+  <meta name="msapplication-config" content="./browserconfig.xml" />
+  <meta name="msapplication-TileColor" content="#1337af" />
   <meta name="msapplication-TileImage" content="./assets/ms-icon-144x144.png" />
 
   <link rel="apple-touch-icon" href="./assets/apple-icon-180.png" />
@@ -44,37 +44,69 @@
       </header>
 
       <main class="px-3">
-        <h1>Cover your page.</h1>
-        <p class="lead">
-          Run SystemlessDebloater at least one, and put your "SystemlessDebloater.log" (in your Download folder) in
-          here.
-        </p>
-        <p class="lead visually-hidden">
-          <a href="#"
-             class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
-        </p>
-        <div class="container lead mt-5">
-          <form id="fileInputForm" enctype="multipart/form-data">
-            <div class="mb-3">
-              <label class="visually-hidden form-label" for="selectFile">Select file</label>
-              <input
-                type="file"
-                class="file-input form-control"
-                id="selectFile" />
-            </div>
-            <div class="visually-hidden mb-3">
-              <label for="pasteFile" class="visually-hidden form-label">Paste file</label>
-              <textarea class="form-control" id="pasteFile" rows="3"></textarea>
-            </div>
-            <div class="visually-hidden mb-3">
-              <button
-                type="submit"
-                id="startButton"
-                class="btn btn-lg btn-secondary fw-bold border-white bg-white">
-                Start
-              </button>
-            </div>
-          </form>
+        <!-- input content -->
+        <div id="input-container">
+          <h1>Input your SystemlessDebloater.log</h1>
+          <p class="lead">
+            Run SystemlessDebloater at least once. Default location is in your `/sdcard/Download` folder.
+          </p>
+          <p class="lead visually-hidden">
+            <a href="#"
+               class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
+          </p>
+          <div class="container lead mt-5">
+            <form id="fileInputForm" enctype="multipart/form-data">
+              <div class="mb-3">
+                <label class="visually-hidden form-label" for="selectFile">Select file</label>
+                <input
+                  type="file"
+                  class="file-input form-control"
+                  id="selectFile" />
+              </div>
+              <div class="visually-hidden mb-3">
+                <label for="pasteFile" class="visually-hidden form-label">Paste file</label>
+                <textarea class="form-control" id="pasteFile" rows="3"></textarea>
+              </div>
+              <div class="visually-hidden mb-3">
+                <button
+                  type="submit"
+                  id="startButton"
+                  class="btn btn-lg btn-secondary fw-bold border-white bg-white">
+                  Start
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- result content-->
+        <div id="result-container" class="visually-hidden">
+          <h1>Results</h1>
+          <div class="container lead mt-5">
+            <ol class="list-group list-group-numbered">
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">Subheading</div>
+                  Cras justo odio
+                </div>
+                <span class="badge bg-primary rounded-pill">14</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">Subheading</div>
+                  Cras justo odio
+                </div>
+                <span class="badge bg-primary rounded-pill">14</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">Subheading</div>
+                  Cras justo odio
+                </div>
+                <span class="badge bg-primary rounded-pill">14</span>
+              </li>
+            </ol>
+          </div>
         </div>
       </main>
 
