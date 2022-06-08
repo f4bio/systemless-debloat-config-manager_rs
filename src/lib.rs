@@ -1,6 +1,9 @@
 extern crate web_sys;
 
-use visdom::Vis;
+use gloo_console::log;
+use gloo_events::EventListener;
+use gloo_timers::callback::Timeout;
+use gloo_utils::{body, document};
 use wasm_bindgen::prelude::*;
 
 mod utils;
@@ -84,21 +87,6 @@ pub fn parse(data: String) -> Result<(), web_sys::ErrorEvent> {
   // console_log!("system_apps: {:?}", system_apps);
   // console_log!("system_packages: {:?}", system_packages);
 
-  let window: web_sys::Window = web_sys::window().expect("no global `window` exists");
-  let document: web_sys::Document = window.document().expect("should have a document on window");
-
-  let root = Vis::load(document.body().unwrap().inner_text())
-    .ok()
-    .unwrap();
-  let mut loading_container_element = root.find("#loading-container");
-  let mut input_container_element = root.find("#input-container");
-  let mut result_container_element = root.find("#result-container");
-  let result_list_element = root.find("#result-list");
-
-  loading_container_element.add_class("visually-hidden");
-  input_container_element.remove_class("visually-hidden");
-  result_container_element.add_class("visually-hidden");
-
   system_apps.iter().for_each(|app| {
     console_log!("system_app: {:?}", app);
 
@@ -113,8 +101,7 @@ pub fn parse(data: String) -> Result<(), web_sys::ErrorEvent> {
         </li>"##,
       app
     );
-    let list_item = Vis::load(html).unwrap();
-    result_list_element.children("").add(list_item);
+    log!("{}", html);
   });
 
   Ok(())
@@ -125,7 +112,37 @@ pub fn parse(data: String) -> Result<(), web_sys::ErrorEvent> {
 pub fn main() -> Result<(), JsValue> {
   utils::set_panic_hook();
 
-  console_log!("Hello wasm from macro!");
+  log!("Hello wasm from macro!");
+
+  let loading_container_element: Option<web_sys::Element> =
+    document().get_element_by_id("loading-container");
+  let input_container_element: Option<web_sys::Element> =
+    document().get_element_by_id("input-container");
+  // let result_container_element: Option<web_sys::Element> =
+  //   document().get_element_by_id("result-container");
+  // let file_input_element = root.find("#selectFile");
+  // let result_list_element = root.find("#result-list");
+
+  let timeout = Timeout::new(1_000, move || {
+    // Do something after the one second timeout is up!
+    loading_container_element
+      .unwrap()
+      .toggle_attribute("hidden")
+      .expect("TODO: panic message");
+    input_container_element
+      .unwrap()
+      .toggle_attribute("hidden")
+      .expect("TODO: panic message");
+  });
+
+  // let listener = EventListener::new(&file_input_element "click", move |event| {
+  //   let event = event.dyn_ref::<web_sys::MouseEvent>().unwrap_throw();
+  //
+  //   // ...
+  // });
+
+  // Since we don't plan on cancelling the timeout, call `forget`.
+  timeout.forget();
 
   Ok(())
 }
