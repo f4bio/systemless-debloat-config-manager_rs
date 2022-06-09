@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin");
+const WorkboxPlugin = require("workbox-webpack-plugin");
 
 module.exports = {
   entry: [
@@ -23,8 +24,15 @@ module.exports = {
         "description": "SystemlessDebloat Config Manager",
         "apple-mobile-web-app-capable": "yes",
         "theme-color": "#1337af",
+        "msapplication-TileColor": "#1337af",
         viewport: "width=device-width, initial-scale=1, shrink-to-fit=no"
       }
+    }),
+    new WorkboxPlugin.GenerateSW({
+      // these options encourage the ServiceWorkers to get in there fast
+      // and not allow any straggling "old" SWs to hang around
+      clientsClaim: true,
+      skipWaiting: true
     })
   ],
   experiments: {
@@ -40,20 +48,6 @@ module.exports = {
       {
         test: /\.html$/,
         use: ["html-loader", "posthtml-loader"]
-      },
-      {
-        test: /manifest\.json/,
-        type: "asset/resource",
-        generator: {
-          filename: "manifest.json"
-        }
-      },
-      {
-        test: /browserconfig\.xml/,
-        type: "asset/resource",
-        generator: {
-          filename: "browserconfig.xml"
-        }
       },
       {
         test: /\.css$/,

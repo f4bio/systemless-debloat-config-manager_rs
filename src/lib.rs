@@ -1,9 +1,9 @@
 extern crate web_sys;
 
-use gloo_console::log;
-use gloo_events::EventListener;
-use gloo_timers::callback::Timeout;
-use gloo_utils::{body, document};
+use gloo::console::log;
+use gloo::events::EventListener;
+use gloo::timers::callback::Timeout;
+use gloo::utils::{body, document};
 use wasm_bindgen::prelude::*;
 
 mod utils;
@@ -118,9 +118,9 @@ pub fn main() -> Result<(), JsValue> {
     document().get_element_by_id("loading-container");
   let input_container_element: Option<web_sys::Element> =
     document().get_element_by_id("input-container");
+  let file_input_element: Option<web_sys::Element> = document().get_element_by_id("selectFile");
   // let result_container_element: Option<web_sys::Element> =
   //   document().get_element_by_id("result-container");
-  // let file_input_element = root.find("#selectFile");
   // let result_list_element = root.find("#result-list");
 
   let timeout = Timeout::new(1_000, move || {
@@ -134,15 +134,16 @@ pub fn main() -> Result<(), JsValue> {
       .toggle_attribute("hidden")
       .expect("TODO: panic message");
   });
-
-  // let listener = EventListener::new(&file_input_element "click", move |event| {
-  //   let event = event.dyn_ref::<web_sys::MouseEvent>().unwrap_throw();
-  //
-  //   // ...
-  // });
-
   // Since we don't plan on cancelling the timeout, call `forget`.
   timeout.forget();
+
+  let listener = EventListener::new(&file_input_element.unwrap(), "change", move |event| {
+    log!("Hello wasm event listener!");
+
+    // let event = event.dyn_ref::<web_sys::MouseEvent>().unwrap_throw();
+    //
+    // // ...
+  });
 
   Ok(())
 }
