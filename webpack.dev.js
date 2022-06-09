@@ -8,11 +8,12 @@ module.exports = merge(common, {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].bundle.js",
-    publicPath: "/",
-    clean: true
+    publicPath: "/"
   },
   devtool: "inline-source-map",
   devServer: {
+    liveReload: false,
+    hot: false,
     static: "./dist"
   },
   plugins: [

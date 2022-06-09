@@ -7,7 +7,7 @@ import wasmLogo from "./assets/webassembly-icon.svg";
 import rustLogo from "./assets/rust-lang-icon.png";
 import bootstrapLogo from "./assets/bootstrap-icon.svg";
 
-import("../pkg");
+import { parse } from "../pkg";
 
 const doInit = () => {
   document.querySelector("#rustLangIcon").src = rustLogo;
@@ -23,23 +23,23 @@ const doInit = () => {
       });
     });
   }
-  // const selectFile = document.getElementById("selectFile");
-  // selectFile.addEventListener("change", (event) => {
-  //   const selectedFileList = event.target["files"];
-  //   // console.log("selectedFileList:", selectedFileList);
-  //
-  //   const reader = new FileReader();
-  //   reader.readAsText(selectedFileList.item(0));
-  //
-  //   reader.onload = function () {
-  //     // console.log("file content:", reader.result);
-  //     rust.then((m) => m.parse(reader.result.toString())).catch(console.error);
-  //   };
-  //
-  //   reader.onerror = function () {
-  //     console.error("error reading file contents:", reader.error);
-  //   };
-  // });
+  const selectFile = document.getElementById("selectFile");
+  selectFile.addEventListener("change", (event) => {
+    const selectedFileList = event.target["files"];
+    // console.log("selectedFileList:", selectedFileList);
+
+    const reader = new FileReader();
+    reader.readAsText(selectedFileList.item(0));
+
+    reader.onload = function() {
+      // console.log("file content:", reader.result);
+      parse(reader.result.toString());
+    };
+
+    reader.onerror = function() {
+      console.error("error reading file contents:", reader.error);
+    };
+  });
 };
 
 if (document.readyState !== "loading") {
