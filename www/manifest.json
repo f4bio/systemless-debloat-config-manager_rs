@@ -1,0 +1,15 @@
+{
+  "name": "SystemlessDebloat Config Manager",
+  "short_name": "sdcm",
+  "background_color": "#1337af",
+  "theme_color": "#1337af",
+  "start_url": ".",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/app-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

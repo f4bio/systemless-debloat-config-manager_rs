@@ -1,0 +1,898 @@
+Magisk Module Systemless Debloater (REPLACE) v1.4.8 log file.
+Copyright (c) zgfg @ xda, 2020-2022
+
+Fri Jun  3 07:09:22 2022
+Android 12 SAR
+24.3:MAGISK (24300)
+
+Input debloat list file: /storage/emulated/0/Download/SystemlessDebloaterList.sh
+
+Input-SarMountPointList="/product /vendor /system_ext /india"
+
+Input-DebloatList="
+AppsEdgePanel_v3.2
+Bixby
+BixbyWakeup
+SystemUIBixby2
+BixbyVisionFramework3.5
+ClockPackage
+CocktailQuickTool
+DeXonPC
+GameHome
+GameTools_Dream
+OneDrive_Samsung_v3
+Routines
+SamsungCalendar
+SamsungContacts
+SamsungDialer
+SamsungMessages
+SamsungWeather
+SecMyFiles2020
+Upday
+3MinitBatterySettings
+3MinitClock
+FBAppManager_NS
+FBInstaller_NS
+FBServices
+"
+
+Verbose logging: true
+Multiple search/debloat: true
+
+Previously debloated system apps:
+ /system/system_ext/priv-app/SystemUI/.replace
+/system/priv-app/SamsungInCallUI/.replace
+
+Debloating:
+found: /system/app/3MinitBatterySettings/3MinitBatterySettings.apk (com.three.minit.minitbatterysettings.free)
+found: /system/app/3MinitClock/3MinitClock.apk (three.minit.clock)
+found: /system/priv-app/AppsEdgePanel_v3.2/AppsEdgePanel_v3.2.apk
+found: /system/priv-app/Bixby/Bixby.apk (com.samsung.android.bixby.agent)
+found: /system/priv-app/BixbyVisionFramework3.5/BixbyVisionFramework3.5.apk (com.samsung.android.bixbyvision.framework)
+found: /system/app/BixbyWakeup/BixbyWakeup.apk
+found: /system/app/ClockPackage/ClockPackage.apk (com.sec.android.app.clockpackage)
+found: /system/app/CocktailQuickTool/CocktailQuickTool.apk (com.sec.android.app.quicktool)
+found: /system/priv-app/DeXonPC/DeXonPC.apk (com.sec.android.app.dexonpc)
+found: /system/app/FBAppManager_NS/FBAppManager_NS.apk (com.facebook.appmanager)
+found: /system/priv-app/FBInstaller_NS/FBInstaller_NS.apk (com.facebook.system)
+found: /system/priv-app/FBServices/FBServices.apk (com.facebook.services)
+found: /system/priv-app/GameHome/GameHome.apk
+found: /system/priv-app/GameTools_Dream/GameTools_Dream.apk (com.samsung.android.game.gametools)
+found: /system/priv-app/OneDrive_Samsung_v3/OneDrive_Samsung_v3.apk
+found: /system/priv-app/Routines/Routines.apk (com.samsung.android.app.routines)
+found: /system/app/SamsungCalendar/SamsungCalendar.apk (com.samsung.android.calendar)
+found: /system/priv-app/SamsungContacts/SamsungContacts.apk (com.samsung.android.app.contacts)
+found: /system/priv-app/SamsungDialer/SamsungDialer.apk (com.samsung.android.dialer)
+found: /system/priv-app/SamsungMessages/SamsungMessages.apk (com.samsung.android.messaging)
+found: /system/app/SamsungWeather/SamsungWeather.apk (com.sec.android.daemonapp)
+found: /system/priv-app/SecMyFiles2020/SecMyFiles2020.apk (com.sec.android.app.myfiles)
+found: /system/priv-app/SystemUIBixby2/SystemUIBixby2.apk (com.samsung.systemui.bixby2)
+found: /system/priv-app/Upday/Upday.apk
+
+DebloatedList="
+3MinitBatterySettings
+3MinitClock
+AppsEdgePanel_v3.2
+Bixby
+BixbyVisionFramework3.5
+BixbyWakeup
+ClockPackage
+CocktailQuickTool
+DeXonPC
+FBAppManager_NS
+FBInstaller_NS
+FBServices
+GameHome
+GameTools_Dream
+OneDrive_Samsung_v3
+Routines
+SamsungCalendar
+SamsungContacts
+SamsungDialer
+SamsungMessages
+SamsungWeather
+SecMyFiles2020
+SystemUIBixby2
+Upday
+"
+
+REPLACE="
+/system/app/3MinitBatterySettings
+/system/app/3MinitClock
+/system/app/BixbyWakeup
+/system/app/ClockPackage
+/system/app/CocktailQuickTool
+/system/app/FBAppManager_NS
+/system/app/SamsungCalendar
+/system/app/SamsungWeather
+/system/priv-app/AppsEdgePanel_v3.2
+/system/priv-app/Bixby
+/system/priv-app/BixbyVisionFramework3.5
+/system/priv-app/DeXonPC
+/system/priv-app/FBInstaller_NS
+/system/priv-app/FBServices
+/system/priv-app/GameHome
+/system/priv-app/GameTools_Dream
+/system/priv-app/OneDrive_Samsung_v3
+/system/priv-app/Routines
+/system/priv-app/SamsungContacts
+/system/priv-app/SamsungDialer
+/system/priv-app/SamsungMessages
+/system/priv-app/SecMyFiles2020
+/system/priv-app/SystemUIBixby2
+/system/priv-app/Upday
+"
+
+System apps, not debloated:
+/system/app/AASAservice (com.samsung.aasaservice)
+/system/app/AddOnComposer (com.samsung.android.app.notes.addons)
+/system/app/AirGlance (com.samsung.android.service.pentastic)
+/system/app/AllShareAware (com.samsung.android.aware.service)
+/system/app/AllshareFileShare (com.samsung.android.allshare.service.fileshare)
+/system/app/AllshareMediaShare (com.samsung.android.allshare.service.mediashare)
+/system/app/ApexService (com.sec.android.app.apex)
+/system/app/AppLinker (com.sec.android.app.applinker)
+/system/app/ARCore
+/system/app/ARDrawing (com.samsung.android.ardrawing)
+/system/app/ARZone (com.samsung.android.arzone)
+/system/app/AutomationTest_FB (com.sec.android.app.DataCreate)
+/system/app/BasicDreams (com.android.dreams.basic)
+/system/app/BBCAgent (com.samsung.android.bbc.bbcagent)
+/system/app/BCService (com.sec.bcservice)
+/system/app/BGMProvider
+/system/app/BlockchainBasicKit
+/system/app/Bluetooth (com.android.bluetooth)
+/system/app/BluetoothMidiService (com.android.bluetoothmidiservice)
+/system/app/BluetoothTest (com.sec.android.app.bluetoothtest)
+/system/app/BookmarkProvider (com.android.bookmarkprovider)
+/system/app/BrightnessBackupService (com.samsung.android.brightnessbackupservice)
+/system/app/CameraExtensionsProxy (com.android.cameraextensions)
+/system/app/Cameralyzer (com.sec.factory.cameralyzer)
+/system/app/CaptivePortalLoginGoogle
+/system/app/CarrierDefaultApp (com.android.carrierdefaultapp)
+/system/app/CertInstaller (com.android.certinstaller)
+/system/app/ChromeCustomizations (com.sec.android.app.chromecustomizations)
+/system/app/ClipboardEdge (com.samsung.android.app.clipboardedge)
+/system/app/CompanionDeviceManager (com.android.companiondevicemanager)
+/system/app/ContainerService (com.samsung.android.container)
+/system/app/DAAgent (com.samsung.android.da.daagent)
+/system/app/DictDiotekForSec (com.diotek.sec.lookup.dictionary)
+/system/app/DRParser (com.sec.android.app.parser)
+/system/app/DsmsAPK (com.samsung.android.dsms)
+/system/app/EasterEgg (com.android.egg)
+/system/app/EasymodeContactsWidget81 (com.sec.android.widgetapp.easymodecontactswidget)
+/system/app/EasyOneHand3 (com.sec.android.easyonehand)
+/system/app/EdmSimPinService (com.sec.enterprise.mdm.services.simpin)
+/system/app/EmergencyLauncher (com.sec.android.emergencylauncher)
+/system/app/EmergencyModeService (com.sec.android.emergencymode.service)
+/system/app/EmergencyProvider (com.sec.android.provider.emergencymode)
+/system/app/ESEServiceAgent (com.samsung.ucs.agent.ese)
+/system/app/FactoryAirCommandManager (com.samsung.android.aircommandmanager)
+/system/app/FactoryCameraFB (com.sec.factory.camera)
+/system/app/Fast
+/system/app/FilterProvider (com.samsung.android.provider.filterprovider)
+/system/app/Foundation (com.monotype.android.font.foundation)
+/system/app/GalaxyResourceUpdater (com.samsung.android.gru)
+/system/app/GearManagerStub (com.samsung.android.app.watchmanagerstub)
+/system/app/GoogleExtShared (com.google.android.ext.shared)
+/system/app/GooglePrintRecommendationService (com.google.android.printservice.recommendation)
+/system/app/HandwritingService (com.samsung.android.sdk.handwriting)
+/system/app/HiyaService (com.hiya.star)
+/system/app/HoneyBoard
+/system/app/ImsSettings (com.samsung.advp.imssettings)
+/system/app/KeyChain (com.android.keychain)
+/system/app/KidsHome_Installer (com.samsung.android.kidsinstaller)
+/system/app/LinkSharing_v11 (com.samsung.android.app.simplesharing)
+/system/app/LiveDrawing (com.samsung.android.service.livedrawing)
+/system/app/LiveTranscribe
+/system/app/MAPSAgent (com.samsung.android.mapsagent)
+/system/app/MdecService (com.samsung.android.mdecservice)
+/system/app/MDMApp (com.samsung.android.mdm)
+/system/app/MdxKitService
+/system/app/MinitBatteryResources (com.three.minit.batteryresources)
+/system/app/MinusOnePage
+/system/app/NfcNci (com.android.nfc)
+/system/app/NfwLocationPrivacy (com.sec.location.nfwlocationprivacy)
+/system/app/Notes40
+/system/app/P2pAwareOverlay (com.samsung.android.wifi.p2paware.resources)
+/system/app/PacProcessor (com.android.pacprocessor)
+/system/app/PartnerBookmarksProvider (com.android.providers.partnerbookmarks)
+/system/app/Personalization (com.sec.android.app.personalization)
+/system/app/PhotoTable (com.android.dreams.phototable)
+/system/app/PlayAutoInstallConfig
+/system/app/PrintSpooler (com.android.printspooler)
+/system/app/Privacy
+/system/app/RcsSettings (com.samsung.rcs)
+/system/app/SafetyInformation (com.samsung.safetyinformation)
+/system/app/SamsungLP (com.wubydax.geartwswipe)
+/system/app/SamsungOne (com.monotype.android.font.samsungone)
+/system/app/SamsungPassAutofill_v1
+/system/app/Samsungsans
+/system/app/SamsungTTS
+/system/app/SCPMClient (com.samsung.android.sm.policy)
+/system/app/SecFactoryPhoneTest (com.sec.phone)
+/system/app/SecHTMLViewer (com.android.htmlviewer)
+/system/app/SecureElement (com.android.se)
+/system/app/SetupWizardLegalProvider (com.sec.android.app.setupwizardlegalprovider)
+/system/app/ShortcutBackupService (com.samsung.android.shortcutbackupservice)
+/system/app/SilentLog (com.sec.modem.settings)
+/system/app/SimAppDialog (com.android.simappdialog)
+/system/app/SimMobilityKit (com.samsung.ims.smk)
+/system/app/SLocation (com.samsung.android.location)
+/system/app/SmartCapture
+/system/app/SmartMirroring (com.samsung.android.smartmirroring)
+/system/app/SmartReminder
+/system/app/SmartSwitchAgent (com.sec.android.easyMover.Agent)
+/system/app/SmartTethering (com.sec.mhs.smarttethering)
+/system/app/SoundPicker_S (com.samsung.android.app.soundpicker)
+/system/app/StickerCenter
+/system/app/Stk (com.android.stk)
+/system/app/Stk2 (com.android.stk2)
+/system/app/sveservice (com.sec.sve)
+/system/app/TetheringAutomation (com.sec.automation)
+/system/app/UnifiedWFC (com.sec.unifiedwfc)
+/system/app/UniversalMDMClient (com.sec.enterprise.knox.cloudmdm.smdms)
+/system/app/USBSettings (com.sec.usbsettings)
+/system/app/UwbTest (com.sec.android.app.uwbtest)
+/system/app/UwbUci (com.samsung.android.uwb)
+/system/app/VideoEditorLite_Dream_N
+/system/app/VideoTrimmer
+/system/app/VisionIntelligence3.7 (com.samsung.android.visionintelligence)
+/system/app/VTCameraSetting (com.samsung.android.vtcamerasettings)
+/system/app/WallpaperBackup (com.android.wallpaperbackup)
+/system/app/WebManual (com.sec.android.widgetapp.webmanual)
+/system/app/WifiGuider (com.samsung.android.net.wifi.wifiguider)
+/system/app/WifiRROverlayApp (com.samsung.android.wifi.resources)
+/system/app/WifiRROverlayAppH2E (com.samsung.android.wifi.h2e.resources)
+/system/app/WlanTest (com.sec.android.app.wlantest)
+/system/framework (android)
+/system/hidden/SmartTutor
+/system/preload/Facebook_stub_preload
+/system/preload/Tips
+/system/priv-app/Accessibility
+/system/priv-app/AirCommand (com.samsung.android.service.aircommand)
+/system/priv-app/AirReadingGlass (com.samsung.android.app.readingglass)
+/system/priv-app/AODService_v70 (com.samsung.android.app.aodservice)
+/system/priv-app/AppLock (com.samsung.android.applock)
+/system/priv-app/AppUpdateCenter (com.samsung.android.app.updatecenter)
+/system/priv-app/AREmoji (com.samsung.android.aremoji)
+/system/priv-app/AREmojiEditor
+/system/priv-app/AuthFactorTouchService (com.samsung.cmfa.AuthTouch)
+/system/priv-app/AuthFramework (com.samsung.android.authfw)
+/system/priv-app/AutoDoodle (com.sec.android.autodoodle.service)
+/system/priv-app/AvatarEmojiSticker_S (com.sec.android.mimage.avatarstickers)
+/system/priv-app/BackupRestoreConfirmation (com.android.backupconfirm)
+/system/priv-app/BadgeProvider_N (com.sec.android.provider.badge)
+/system/priv-app/BeaconManager (com.samsung.android.beaconmanager)
+/system/priv-app/BiometricSetting (com.samsung.android.biometrics.app.setting)
+/system/priv-app/Bixby (com.samsung.android.bixby.agent)
+/system/priv-app/BixbyService
+/system/priv-app/BlockedNumberProvider (com.android.providers.blockednumber)
+/system/priv-app/BlueLightFilter (com.samsung.android.bluelightfilter)
+/system/priv-app/BuiltInPrintService (com.android.bips)
+/system/priv-app/CallBGProvider (com.samsung.android.callbgprovider)
+/system/priv-app/CallContentProvider (com.samsung.android.incall.contentprovider)
+/system/priv-app/CallLogBackup (com.android.calllogbackup)
+/system/priv-app/CIDManager (com.samsung.android.cidmanager)
+/system/priv-app/ClipboardSaveService (com.samsung.clipboardsaveservice)
+/system/priv-app/CMFAFramework (com.samsung.android.cmfa.framework)
+/system/priv-app/CMHProvider (com.samsung.cmh)
+/system/priv-app/CocktailBarService_v3.2 (com.samsung.android.app.cocktailbarservice)
+/system/priv-app/ContainerAgent3 (com.samsung.android.knox.containeragent)
+/system/priv-app/ControlPanel (com.samsung.controlpanel)
+/system/priv-app/Crane (com.samsung.crane)
+/system/priv-app/CSC (com.samsung.sec.android.application.csc)
+/system/priv-app/DesktopModeUiService (com.sec.android.desktopmode.uiservice)
+/system/priv-app/DeviceKeystring (com.sec.android.app.factorykeystring)
+/system/priv-app/DeviceQualityAgent3 (com.samsung.android.dqagent)
+/system/priv-app/DeviceTest (com.sec.factory)
+/system/priv-app/DiagMonAgent8 (com.sec.android.diagmonagent)
+/system/priv-app/DigitalKey
+/system/priv-app/DigitalWellbeing
+/system/priv-app/DocumentsUIGoogle
+/system/priv-app/DownloadProviderUi (com.android.providers.downloads.ui)
+/system/priv-app/DressRoom (com.samsung.android.app.dressroom)
+/system/priv-app/DualOutFocusViewer_S (com.samsung.android.app.dofviewer)
+/system/priv-app/DynamicLockscreen (com.samsung.android.dynamiclock)
+/system/priv-app/DynamicSystemInstallationService (com.android.dynsystem)
+/system/priv-app/EarphoneTypeC
+/system/priv-app/EasySetup
+/system/priv-app/EnhancedAttestationAgent (com.samsung.android.knox.attestation)
+/system/priv-app/EpdgService (com.sec.epdg)
+/system/priv-app/EsimClient (com.samsung.android.app.telephonyui.esimclient)
+/system/priv-app/EuiccService (com.samsung.euicc)
+/system/priv-app/ExternalStorageProvider (com.android.externalstorage)
+/system/priv-app/FaceService (com.samsung.faceservice)
+/system/priv-app/FactoryTestProvider (com.samsung.android.providers.factory)
+/system/priv-app/Finder (com.samsung.android.app.galaxyfinder)
+/system/priv-app/Fmm
+/system/priv-app/FotaAgent (com.wssyncmldm)
+/system/priv-app/FusedLocation (com.android.location.fused)
+/system/priv-app/GalaxyApps_OPEN
+/system/priv-app/GameDriver-SM8350 (com.samsung.gamedriver.sm8350)
+/system/priv-app/GameOptimizingService (com.samsung.android.game.gos)
+/system/priv-app/GooglePackageInstaller (com.google.android.packageinstaller)
+/system/priv-app/GpuWatchApp (com.samsung.gpuwatchapp)
+/system/priv-app/HashTagService (com.samsung.android.service.tagservice)
+/system/priv-app/HdmApk (com.samsung.android.hdmapp)
+/system/priv-app/HealthPlatform
+/system/priv-app/Hearingdro_S (com.sec.hearingadjust)
+/system/priv-app/HwModuleTest (com.sec.android.app.hwmoduletest)
+/system/priv-app/ImsLogger (com.sec.imslogger)
+/system/priv-app/imsservice (com.sec.imsservice)
+/system/priv-app/InputDevices (com.android.inputdevices)
+/system/priv-app/IntelligentDynamicFpsService (com.sec.android.smartfpsadjuster)
+/system/priv-app/IPService (com.samsung.ipservice)
+/system/priv-app/IpsGeofence
+/system/priv-app/ITracker
+/system/priv-app/KLMSAgent (com.samsung.klmsagent)
+/system/priv-app/KnoxAIFrameworkApp (com.samsung.android.app.kfa)
+/system/priv-app/knoxanalyticsagent (com.samsung.android.knox.analytics.uploader)
+/system/priv-app/KnoxCore (com.samsung.android.knox.containercore)
+/system/priv-app/KnoxDesktopLauncher (com.sec.android.app.desktoplauncher)
+/system/priv-app/KnoxGuard (com.samsung.android.kgclient)
+/system/priv-app/KnoxPushManager (com.samsung.android.knox.pushmanager)
+/system/priv-app/knoxvpnproxyhandler (com.knox.vpn.proxyhandler)
+/system/priv-app/KPECore (com.samsung.android.knox.kpecore)
+/system/priv-app/LinkToWindowsService
+/system/priv-app/LiveStickers
+/system/priv-app/LiveWallpapersPicker (com.android.wallpaper.livepicker)
+/system/priv-app/LocaleOverlayManager (com.samsung.android.localeoverlaymanager)
+/system/priv-app/LocalTransport (com.android.localtransport)
+/system/priv-app/ManagedProvisioning (com.android.managedprovisioning)
+/system/priv-app/MCFDeviceSync (com.samsung.android.mcfds)
+/system/priv-app/MdAgent (com.samsung.android.mdagent)
+/system/priv-app/MediaLearningPlatform (com.samsung.mlp)
+/system/priv-app/MediaProviderLegacy (com.android.providers.media)
+/system/priv-app/MmsService (com.android.mms.service)
+/system/priv-app/MobileWips (com.samsung.android.server.wifi.mobilewips)
+/system/priv-app/ModemServiceMode (com.sec.android.RilServiceModeApp)
+/system/priv-app/MtpApplication (com.samsung.android.mtp)
+/system/priv-app/MtpService (com.android.mtp)
+/system/priv-app/MultiSoundSetting (com.samsung.android.setting.multisound)
+/system/priv-app/NetworkDiagnostic (com.samsung.android.networkdiagnostic)
+/system/priv-app/NetworkPermissionConfigGoogle
+/system/priv-app/NetworkPermissionConfigGoogle (com.google.android.networkstack.permissionconfig)
+/system/priv-app/NetworkStackGoogle
+/system/priv-app/NSDSWebApp (com.sec.vsim.ericssonnsds.webapp)
+/system/priv-app/NSFusedLocation_v6.0 (com.sec.location.nsflp2)
+/system/priv-app/OdaService (com.samsung.oda.service)
+/system/priv-app/OmaCP (com.wsomacp)
+/system/priv-app/OMCAgent5 (com.samsung.android.app.omcagent)
+/system/priv-app/ONS (com.android.ons)
+/system/priv-app/PaymentFramework (com.samsung.android.spayfw)
+/system/priv-app/PeopleStripe (com.samsung.android.service.peoplestripe)
+/system/priv-app/PeripheralFramework (com.samsung.android.peripheral.framework)
+/system/priv-app/PhoneErrService (com.sec.app.RilErrorNotifier)
+/system/priv-app/PhotoEditor_Full
+/system/priv-app/PrivacyDashboard (com.samsung.android.privacydashboard)
+/system/priv-app/ProxyHandler (com.android.proxyhandler)
+/system/priv-app/Quickboard (com.samsung.android.mdx.quickboard)
+/system/priv-app/ROMTool (com.ketan.romtoolf3)
+/system/priv-app/RubinVersion3
+/system/priv-app/SamsungAccount
+/system/priv-app/SamsungBilling
+/system/priv-app/SamsungCalendarProvider (com.android.providers.calendar)
+/system/priv-app/SamsungCamera (com.sec.android.app.camera)
+/system/priv-app/SamsungCarKeyFw (com.samsung.android.carkey)
+/system/priv-app/SamsungCloudClient
+/system/priv-app/SamsungContactsProvider (com.samsung.android.providers.contacts)
+/system/priv-app/SamsungControl (com.wubydax.romcontrol.v2)
+/system/priv-app/SamsungCoreServices (com.samsung.android.scs)
+/system/priv-app/SamsungDeviceHealthManagerService (com.sec.android.sdhms)
+/system/priv-app/SamsungExperienceService
+/system/priv-app/SamsungGallery2018
+/system/priv-app/SamsungInCallUI (com.samsung.android.incallui)
+/system/priv-app/SamsungMagnifier3 (com.sec.android.app.magnifier)
+/system/priv-app/SamsungMultiConnectivity (com.samsung.android.mcfserver)
+/system/priv-app/SamsungPass
+/system/priv-app/SamsungPositioning (com.samsung.android.samsungpositioning)
+/system/priv-app/SamsungSmartSuggestions (com.samsung.android.smartsuggestions)
+/system/priv-app/SamsungVideoPlayer
+/system/priv-app/SCameraSDKService (com.samsung.android.camerasdkservice)
+/system/priv-app/SDMConfig (com.samsung.android.sdm.config)
+/system/priv-app/SecAppSeparation (com.samsung.android.appseparation)
+/system/priv-app/SecDownloadProvider (com.android.providers.downloads)
+/system/priv-app/SecMediaProvider (com.samsung.android.providers.media)
+/system/priv-app/SecSettings (com.android.settings)
+/system/priv-app/SecSettingsIntelligence (com.android.settings.intelligence)
+/system/priv-app/SecSetupWizard_Global (com.sec.android.app.SecSetupWizard)
+/system/priv-app/SecSoundPicker (com.samsung.android.secsoundpicker)
+/system/priv-app/SecTelephonyProvider (com.android.providers.telephony)
+/system/priv-app/SecureFolder (com.samsung.knox.securefolder)
+/system/priv-app/sec_camerax_service (com.samsung.android.cameraxservice)
+/system/priv-app/SEMFactoryApp (com.sem.factoryapp)
+/system/priv-app/SendHelpMessage (com.sec.android.app.safetyassurance)
+/system/priv-app/serviceModeApp_FB (com.sec.android.app.servicemodeapp)
+/system/priv-app/SettingsBixby (com.samsung.android.app.settings.bixby)
+/system/priv-app/SettingsProvider (com.android.providers.settings)
+/system/priv-app/SharedStorageBackup (com.android.sharedstoragebackup)
+/system/priv-app/ShareLive
+/system/priv-app/Shell (com.android.shell)
+/system/priv-app/SingleTakeService (com.samsung.android.singletake.service)
+/system/priv-app/SKMSAgent (com.skms.android.agent)
+/system/priv-app/SmartCallProvider (com.samsung.android.smartcallprovider)
+/system/priv-app/SmartEpdgTestApp (com.sec.epdgtestapp)
+/system/priv-app/SmartEye (com.samsung.android.service.airviewdictionary)
+/system/priv-app/smartfaceservice (com.samsung.android.smartface)
+/system/priv-app/SmartManager_v5
+/system/priv-app/SmartManager_v6_DeviceSecurity (com.samsung.android.sm.devicesecurity)
+/system/priv-app/SmartSwitchAssistant (com.samsung.android.smartswitchassistant)
+/system/priv-app/SmartThingsKit
+/system/priv-app/SmartTouchCall (com.samsung.android.visualars)
+/system/priv-app/SOAgent7 (com.sec.android.soagent)
+/system/priv-app/SoundAlive_S (com.sec.android.app.soundalive)
+/system/priv-app/SPPPushClient
+/system/priv-app/StatementService (com.android.statementservice)
+/system/priv-app/StickerFaceARAvatar (com.samsung.android.app.camera.sticker.facearavatar.preload)
+/system/priv-app/StoryService (com.samsung.storyservice)
+/system/priv-app/SumeNNService (com.samsung.android.sume.nn.service)
+/system/priv-app/SVCAgent (com.samsung.android.svcagent)
+/system/priv-app/SVoiceIME (com.samsung.android.svoiceime)
+/system/priv-app/SystemUIDesktop (com.samsung.desktopsystemui)
+/system/priv-app/SystemUpdate (com.sec.android.systemupdate)
+/system/priv-app/TADownloader (com.samsung.android.tadownloader)
+/system/priv-app/Tag (com.android.apps.tag)
+/system/priv-app/TalkbackSE
+/system/priv-app/TaPackAuthFw (com.samsung.android.tapack.authfw)
+/system/priv-app/TaskEdgePanel_v3.2 (com.samsung.android.app.taskedge)
+/system/priv-app/Telecom (com.android.server.telecom)
+/system/priv-app/TelephonyUI (com.samsung.android.app.telephonyui)
+/system/priv-app/TeleService (com.android.phone)
+/system/priv-app/ThemeCenter (com.samsung.android.themecenter)
+/system/priv-app/ThemeStore
+/system/priv-app/TouchWizHome_2017
+/system/priv-app/Traceur (com.android.traceur)
+/system/priv-app/UserDictionaryProvider (com.android.providers.userdictionary)
+/system/priv-app/VolumeMonitorProvider_S (com.sec.android.app.volumemonitorprovider)
+/system/priv-app/VpnDialogs (com.android.vpndialogs)
+/system/priv-app/wallpaper-res (com.samsung.android.wallpaper.res)
+/system/priv-app/YourPhone_P1_5
+/system/product/app/Chrome
+/system/product/app/com.google.android.modulemetadata
+/system/product/app/com.google.mainline.telemetry
+/system/product/app/ConnectivityUxOverlay (com.samsung.android.ConnectivityUxOverlay)
+/system/product/app/DuoStub
+/system/product/app/Gmail2
+/system/product/app/GoogleCalendarSyncAdapter (com.google.android.syncadapters.calendar)
+/system/product/app/GoogleContactsSyncAdapter (com.google.android.syncadapters.contacts)
+/system/product/app/GoogleLocationHistory (com.google.android.gms.location.history)
+/system/product/app/Maps
+/system/product/app/NetworkStackOverlay (com.samsung.android.networkstack)
+/system/product/app/SpeechServicesByGoogle
+/system/product/app/TrichromeLibrary
+/system/product/app/WcmUrlsNetworkStackOverlay (com.samsung.android.wcmurlsnetworkstack)
+/system/product/app/WebViewGoogle
+/system/product/app/YouTube
+/system/product/overlay (android.auto_generated_rro_product__)
+/system/product/overlay (com.google.android.overlay.gmsconfig.common)
+/system/product/overlay (com.google.android.overlay.gmsconfig.geotz)
+/system/product/overlay (com.google.android.overlay.gmsconfig.gsa)
+/system/product/overlay (com.google.android.overlay.gmsconfig.photos)
+/system/product/overlay (com.google.android.overlay.modules.cellbroadcastreceiver)
+/system/product/overlay (com.google.android.overlay.modules.cellbroadcastservice)
+/system/product/overlay (com.google.android.overlay.modules.documentsui)
+/system/product/overlay (com.google.android.overlay.modules.ext.services)
+/system/product/overlay (com.google.android.overlay.modules.modulemetadata.forframework)
+/system/product/overlay (com.google.android.overlay.modules.permissioncontroller)
+/system/product/overlay (com.google.android.overlay.modules.permissioncontroller.forframework)
+/system/product/overlay (com.samsung.phone.overlay.common)
+/system/product/overlay/DisplayCutoutEmulationCorner (com.android.internal.display.cutout.emulation.corner)
+/system/product/overlay/DisplayCutoutEmulationDouble (com.android.internal.display.cutout.emulation.double)
+/system/product/overlay/DisplayCutoutEmulationHole (com.android.internal.display.cutout.emulation.hole)
+/system/product/overlay/DisplayCutoutEmulationTall (com.android.internal.display.cutout.emulation.tall)
+/system/product/overlay/DisplayCutoutEmulationWaterfall (com.android.internal.display.cutout.emulation.waterfall)
+/system/product/overlay/FontNotoSerifSource (com.android.theme.font.notoserifsource)
+/system/product/overlay/NavigationBarMode3Button (com.android.internal.systemui.navbar.threebutton)
+/system/product/overlay/NavigationBarModeGestural (com.android.internal.systemui.navbar.gestural)
+/system/product/overlay/NavigationBarModeGesturalExtraWideBack (com.android.internal.systemui.navbar.gestural_extra_wide_back)
+/system/product/overlay/NavigationBarModeGesturalNarrowBack (com.android.internal.systemui.navbar.gestural_narrow_back)
+/system/product/overlay/NavigationBarModeGesturalNoHint (com.samsung.internal.systemui.navbar.gestural_no_hint)
+/system/product/overlay/NavigationBarModeGesturalWideBack (com.android.internal.systemui.navbar.gestural_wide_back)
+/system/product/overlay/NavigationBarModeSamsungGestural (com.samsung.internal.systemui.navbar.sec_gestural)
+/system/product/overlay/NavigationBarModeSamsungGesturalNoHint (com.samsung.internal.systemui.navbar.sec_gestural_no_hint)
+/system/product/overlay/OneHandedModeGestural (com.android.internal.systemui.onehanded.gestural)
+/system/product/priv-app/AndroidAutoStub
+/system/product/priv-app/CarrierServices
+/system/product/priv-app/CarrierWifi (com.google.android.apps.carrier.carrierwifi)
+/system/product/priv-app/ConfigUpdater (com.google.android.configupdater)
+/system/product/priv-app/DevicePersonalizationServices
+/system/product/priv-app/GmsCore
+/system/product/priv-app/GmsCore/m/independent
+/system/product/priv-app/GoogleOneTimeInitializer (com.google.android.onetimeinitializer)
+/system/product/priv-app/GooglePartnerSetup (com.google.android.partnersetup)
+/system/product/priv-app/GoogleRestore
+/system/product/priv-app/HotwordEnrollmentOKGoogleEx3HEXAGON (com.android.hotwordenrollment.okgoogle)
+/system/product/priv-app/HotwordEnrollmentXGoogleEx3HEXAGON (com.android.hotwordenrollment.xgoogle)
+/system/product/priv-app/ImsServiceEntitlement (com.android.imsserviceentitlement)
+/system/product/priv-app/Messages
+/system/product/priv-app/Phonesky
+/system/product/priv-app/PrivateComputeServices
+/system/product/priv-app/SearchSelector (com.google.android.apps.setupwizard.searchselector)
+/system/product/priv-app/Turbo
+/system/product/priv-app/Velvet
+/system/system_ext/app/com.qualcomm.qti.services.secureui (com.qualcomm.qti.services.secureui)
+/system/system_ext/app/QdcmFF (com.qti.snapdragon.qdcm_ff)
+/system/system_ext/priv-app/CarrierConfig (com.android.carrierconfig)
+/system/system_ext/priv-app/com.qualcomm.qti.services.systemhelper (com.qualcomm.qti.services.systemhelper)
+/system/system_ext/priv-app/EmergencyInfo (com.android.emergency)
+/system/system_ext/priv-app/GoogleFeedback (com.google.android.feedback)
+/system/system_ext/priv-app/GoogleServicesFramework (com.google.android.gsf)
+/system/system_ext/priv-app/SetupWizard (com.google.android.setupwizard)
+/system/system_ext/priv-app/StorageManager (com.android.storagemanager)
+/system/system_ext/priv-app/SystemUI (com.android.systemui)
+/system/system_ext/priv-app/WallpaperCropper (com.android.wallpapercropper)
+/system/vendor/app/CACertService (vendor.qti.hardware.cacert.server)
+/system/vendor/app/com.qualcomm.qti.gpudrivers.lahaina.api30 (com.qualcomm.qti.gpudrivers.lahaina.api30)
+/system/vendor/app/QCC-TR-UI (com.qualcomm.qti.smq)
+/system/vendor/app/TimeService (com.qualcomm.timeservice)
+/system/vendor/app/vklayer (com.samsung.vklayer.sm8350)
+/system/vendor/overlay (android.auto_generated_rro_vendor__)
+/system/vendor/overlay/ConnectivityOverlay (com.samsung.android.ConnectivityOverlay)
+/system/vendor/overlay/SoftapOverlay (com.samsung.android.wifi.softap.resources)
+/system/vendor/overlay/SoftapOverlayWpa3 (com.samsung.android.wifi.softapwpathree.resources)
+/system/vendor/overlay/TetheringOverlay (com.google.android.networkstack.tethering.overlay)
+/system/vendor/overlay/TetheringOverlay_Gsi (com.samsung.android.networkstack.tethering.overlay)
+
+System packages:
+/system/apex/com.android.apex.cts.shim/app/CtsShim/CtsShim.apk=com.android.cts.ctsshim
+/system/apex/com.android.apex.cts.shim/priv-app/CtsShimPriv/CtsShimPriv.apk=com.android.cts.priv.ctsshim
+/system/apex/com.android.cellbroadcast/priv-app/GoogleCellBroadcastApp@M_2022_05/GoogleCellBroadcastApp.apk=com.google.android.cellbroadcastreceiver
+/system/apex/com.android.cellbroadcast/priv-app/GoogleCellBroadcastServiceModule@M_2022_05/GoogleCellBroadcastServiceModule.apk=com.google.android.cellbroadcastservice
+/system/apex/com.android.extservices/priv-app/GoogleExtServices@M_2022_05/GoogleExtServices.apk=com.google.android.ext.services
+/system/apex/com.android.mediaprovider/priv-app/MediaProviderGoogle@M_2022_05/MediaProviderGoogle.apk=com.google.android.providers.media.module
+/system/apex/com.android.permission/priv-app/GooglePermissionController@M_2022_05/GooglePermissionController.apk=com.google.android.permissioncontroller
+/system/apex/com.android.tethering/priv-app/ServiceConnectivityResourcesGoogle@M_2022_05/ServiceConnectivityResourcesGoogle.apk=com.google.android.connectivity.resources
+/system/apex/com.android.tethering/priv-app/TetheringGoogle@M_2022_05/TetheringGoogle.apk=com.google.android.networkstack.tethering
+/system/apex/com.android.wifi/app/OsuLogin/OsuLogin.apk=com.android.hotspot2.osulogin
+/system/apex/com.android.wifi/priv-app/ServiceWifiResources/ServiceWifiResources.apk=com.android.wifi.resources
+/system/app/3MinitBatterySettings/3MinitBatterySettings.apk=com.three.minit.minitbatterysettings.free
+/system/app/3MinitClock/3MinitClock.apk=three.minit.clock
+/system/app/AASAservice/AASAservice.apk=com.samsung.aasaservice
+/system/app/AddOnComposer/AddOnComposer.apk=com.samsung.android.app.notes.addons
+/system/app/AirGlance/AirGlance.apk=com.samsung.android.service.pentastic
+/system/app/AllShareAware/AllShareAware.apk=com.samsung.android.aware.service
+/system/app/AllshareFileShare/AllshareFileShare.apk=com.samsung.android.allshare.service.fileshare
+/system/app/AllshareMediaShare/AllshareMediaShare.apk=com.samsung.android.allshare.service.mediashare
+/system/app/ApexService/ApexService.apk=com.sec.android.app.apex
+/system/app/AppLinker/AppLinker.apk=com.sec.android.app.applinker
+/system/app/ARDrawing/ARDrawing.apk=com.samsung.android.ardrawing
+/system/app/ARZone/ARZone.apk=com.samsung.android.arzone
+/system/app/AutomationTest_FB/AutomationTest_FB.apk=com.sec.android.app.DataCreate
+/system/app/BasicDreams/BasicDreams.apk=com.android.dreams.basic
+/system/app/BBCAgent/BBCAgent.apk=com.samsung.android.bbc.bbcagent
+/system/app/BCService/BCService.apk=com.sec.bcservice
+/system/app/Bluetooth/Bluetooth.apk=com.android.bluetooth
+/system/app/BluetoothMidiService/BluetoothMidiService.apk=com.android.bluetoothmidiservice
+/system/app/BluetoothTest/BluetoothTest.apk=com.sec.android.app.bluetoothtest
+/system/app/BookmarkProvider/BookmarkProvider.apk=com.android.bookmarkprovider
+/system/app/BrightnessBackupService/BrightnessBackupService.apk=com.samsung.android.brightnessbackupservice
+/system/app/CameraExtensionsProxy/CameraExtensionsProxy.apk=com.android.cameraextensions
+/system/app/Cameralyzer/Cameralyzer.apk=com.sec.factory.cameralyzer
+/system/app/CarrierDefaultApp/CarrierDefaultApp.apk=com.android.carrierdefaultapp
+/system/app/CertInstaller/CertInstaller.apk=com.android.certinstaller
+/system/app/ChromeCustomizations/ChromeCustomizations.apk=com.sec.android.app.chromecustomizations
+/system/app/ClipboardEdge/ClipboardEdge.apk=com.samsung.android.app.clipboardedge
+/system/app/ClockPackage/ClockPackage.apk=com.sec.android.app.clockpackage
+/system/app/CocktailQuickTool/CocktailQuickTool.apk=com.sec.android.app.quicktool
+/system/app/CompanionDeviceManager/CompanionDeviceManager.apk=com.android.companiondevicemanager
+/system/app/ContainerService/ContainerService.apk=com.samsung.android.container
+/system/app/DAAgent/DAAgent.apk=com.samsung.android.da.daagent
+/system/app/DictDiotekForSec/DictDiotekForSec.apk=com.diotek.sec.lookup.dictionary
+/system/app/DRParser/DRParser.apk=com.sec.android.app.parser
+/system/app/DsmsAPK/DsmsAPK.apk=com.samsung.android.dsms
+/system/app/EasterEgg/EasterEgg.apk=com.android.egg
+/system/app/EasymodeContactsWidget81/EasymodeContactsWidget81.apk=com.sec.android.widgetapp.easymodecontactswidget
+/system/app/EasyOneHand3/EasyOneHand3.apk=com.sec.android.easyonehand
+/system/app/EdmSimPinService/EdmSimPinService.apk=com.sec.enterprise.mdm.services.simpin
+/system/app/EmergencyLauncher/EmergencyLauncher.apk=com.sec.android.emergencylauncher
+/system/app/EmergencyModeService/EmergencyModeService.apk=com.sec.android.emergencymode.service
+/system/app/EmergencyProvider/EmergencyProvider.apk=com.sec.android.provider.emergencymode
+/system/app/ESEServiceAgent/ESEServiceAgent.apk=com.samsung.ucs.agent.ese
+/system/app/FactoryAirCommandManager/FactoryAirCommandManager.apk=com.samsung.android.aircommandmanager
+/system/app/FactoryCameraFB/FactoryCameraFB.apk=com.sec.factory.camera
+/system/app/FBAppManager_NS/FBAppManager_NS.apk=com.facebook.appmanager
+/system/app/FilterProvider/FilterProvider.apk=com.samsung.android.provider.filterprovider
+/system/app/Foundation/Foundation.apk=com.monotype.android.font.foundation
+/system/app/GalaxyResourceUpdater/GalaxyResourceUpdater.apk=com.samsung.android.gru
+/system/app/GearManagerStub/GearManagerStub.apk=com.samsung.android.app.watchmanagerstub
+/system/app/GoogleExtShared/GoogleExtShared.apk=com.google.android.ext.shared
+/system/app/GooglePrintRecommendationService/GooglePrintRecommendationService.apk=com.google.android.printservice.recommendation
+/system/app/HandwritingService/HandwritingService.apk=com.samsung.android.sdk.handwriting
+/system/app/HiyaService/HiyaService.apk=com.hiya.star
+/system/app/ImsSettings/ImsSettings.apk=com.samsung.advp.imssettings
+/system/app/KeyChain/KeyChain.apk=com.android.keychain
+/system/app/KidsHome_Installer/KidsHome_Installer.apk=com.samsung.android.kidsinstaller
+/system/app/LinkSharing_v11/LinkSharing_v11.apk=com.samsung.android.app.simplesharing
+/system/app/LiveDrawing/LiveDrawing.apk=com.samsung.android.service.livedrawing
+/system/app/MAPSAgent/MAPSAgent.apk=com.samsung.android.mapsagent
+/system/app/MdecService/MdecService.apk=com.samsung.android.mdecservice
+/system/app/MDMApp/MDMApp.apk=com.samsung.android.mdm
+/system/app/MinitBatteryResources/MinitBatteryResources.apk=com.three.minit.batteryresources
+/system/app/NfcNci/NfcNci.apk=com.android.nfc
+/system/app/NfwLocationPrivacy/NfwLocationPrivacy.apk=com.sec.location.nfwlocationprivacy
+/system/app/P2pAwareOverlay/P2pAwareOverlay.apk=com.samsung.android.wifi.p2paware.resources
+/system/app/PacProcessor/PacProcessor.apk=com.android.pacprocessor
+/system/app/PartnerBookmarksProvider/PartnerBookmarksProvider.apk=com.android.providers.partnerbookmarks
+/system/app/Personalization/Personalization.apk=com.sec.android.app.personalization
+/system/app/PhotoTable/PhotoTable.apk=com.android.dreams.phototable
+/system/app/PrintSpooler/PrintSpooler.apk=com.android.printspooler
+/system/app/RcsSettings/RcsSettings.apk=com.samsung.rcs
+/system/app/SafetyInformation/SafetyInformation.apk=com.samsung.safetyinformation
+/system/app/SamsungCalendar/SamsungCalendar.apk=com.samsung.android.calendar
+/system/app/SamsungLP/SamsungLP.apk=com.wubydax.geartwswipe
+/system/app/SamsungOne/SamsungOne.apk=com.monotype.android.font.samsungone
+/system/app/SamsungWeather/SamsungWeather.apk=com.sec.android.daemonapp
+/system/app/SCPMClient/SCPMClient.apk=com.samsung.android.sm.policy
+/system/app/SecFactoryPhoneTest/SecFactoryPhoneTest.apk=com.sec.phone
+/system/app/SecHTMLViewer/SecHTMLViewer.apk=com.android.htmlviewer
+/system/app/SecureElement/SecureElement.apk=com.android.se
+/system/app/SetupWizardLegalProvider/SetupWizardLegalProvider.apk=com.sec.android.app.setupwizardlegalprovider
+/system/app/ShortcutBackupService/ShortcutBackupService.apk=com.samsung.android.shortcutbackupservice
+/system/app/SilentLog/SilentLog.apk=com.sec.modem.settings
+/system/app/SimAppDialog/SimAppDialog.apk=com.android.simappdialog
+/system/app/SimMobilityKit/SimMobilityKit.apk=com.samsung.ims.smk
+/system/app/SLocation/SLocation.apk=com.samsung.android.location
+/system/app/SmartMirroring/SmartMirroring.apk=com.samsung.android.smartmirroring
+/system/app/SmartSwitchAgent/SmartSwitchAgent.apk=com.sec.android.easyMover.Agent
+/system/app/SmartTethering/SmartTethering.apk=com.sec.mhs.smarttethering
+/system/app/SoundPicker_S/SoundPicker_S.apk=com.samsung.android.app.soundpicker
+/system/app/Stk/Stk.apk=com.android.stk
+/system/app/Stk2/Stk2.apk=com.android.stk2
+/system/app/sveservice/sveservice.apk=com.sec.sve
+/system/app/TetheringAutomation/TetheringAutomation.apk=com.sec.automation
+/system/app/UnifiedWFC/UnifiedWFC.apk=com.sec.unifiedwfc
+/system/app/UniversalMDMClient/UniversalMDMClient.apk=com.sec.enterprise.knox.cloudmdm.smdms
+/system/app/USBSettings/USBSettings.apk=com.sec.usbsettings
+/system/app/UwbTest/UwbTest.apk=com.sec.android.app.uwbtest
+/system/app/UwbUci/UwbUci.apk=com.samsung.android.uwb
+/system/app/VisionIntelligence3.7/VisionIntelligence3.7.apk=com.samsung.android.visionintelligence
+/system/app/VTCameraSetting/VTCameraSetting.apk=com.samsung.android.vtcamerasettings
+/system/app/WallpaperBackup/WallpaperBackup.apk=com.android.wallpaperbackup
+/system/app/WebManual/WebManual.apk=com.sec.android.widgetapp.webmanual
+/system/app/WifiGuider/WifiGuider.apk=com.samsung.android.net.wifi.wifiguider
+/system/app/WifiRROverlayApp/WifiRROverlayApp.apk=com.samsung.android.wifi.resources
+/system/app/WifiRROverlayAppH2E/WifiRROverlayAppH2E.apk=com.samsung.android.wifi.h2e.resources
+/system/app/WlanTest/WlanTest.apk=com.sec.android.app.wlantest
+/system/framework/framework-res.apk=android
+/system/prism/app/SwiftKeyFactorySettings-samsung/SwiftKeyFactorySettings-samsung.apk=com.swiftkey.swiftkeyconfigurator
+/system/priv-app/AirCommand/AirCommand.apk=com.samsung.android.service.aircommand
+/system/priv-app/AirReadingGlass/AirReadingGlass.apk=com.samsung.android.app.readingglass
+/system/priv-app/AODService_v70/AODService_v70.apk=com.samsung.android.app.aodservice
+/system/priv-app/AppLock/AppLock.apk=com.samsung.android.applock
+/system/priv-app/AppUpdateCenter/AppUpdateCenter.apk=com.samsung.android.app.updatecenter
+/system/priv-app/AREmoji/AREmoji.apk=com.samsung.android.aremoji
+/system/priv-app/AuthFactorTouchService/AuthFactorTouchService.apk=com.samsung.cmfa.AuthTouch
+/system/priv-app/AuthFramework/AuthFramework.apk=com.samsung.android.authfw
+/system/priv-app/AutoDoodle/AutoDoodle.apk=com.sec.android.autodoodle.service
+/system/priv-app/AvatarEmojiSticker_S/AvatarEmojiSticker_S.apk=com.sec.android.mimage.avatarstickers
+/system/priv-app/BackupRestoreConfirmation/BackupRestoreConfirmation.apk=com.android.backupconfirm
+/system/priv-app/BadgeProvider_N/BadgeProvider_N.apk=com.sec.android.provider.badge
+/system/priv-app/BeaconManager/BeaconManager.apk=com.samsung.android.beaconmanager
+/system/priv-app/BiometricSetting/BiometricSetting.apk=com.samsung.android.biometrics.app.setting
+/system/priv-app/Bixby/Bixby.apk=com.samsung.android.bixby.agent
+/system/priv-app/BixbyVisionFramework3.5/BixbyVisionFramework3.5.apk=com.samsung.android.bixbyvision.framework
+/system/priv-app/BlockedNumberProvider/BlockedNumberProvider.apk=com.android.providers.blockednumber
+/system/priv-app/BlueLightFilter/BlueLightFilter.apk=com.samsung.android.bluelightfilter
+/system/priv-app/BuiltInPrintService/BuiltInPrintService.apk=com.android.bips
+/system/priv-app/CallBGProvider/CallBGProvider.apk=com.samsung.android.callbgprovider
+/system/priv-app/CallContentProvider/CallContentProvider.apk=com.samsung.android.incall.contentprovider
+/system/priv-app/CallLogBackup/CallLogBackup.apk=com.android.calllogbackup
+/system/priv-app/CIDManager/CIDManager.apk=com.samsung.android.cidmanager
+/system/priv-app/ClipboardSaveService/ClipboardSaveService.apk=com.samsung.clipboardsaveservice
+/system/priv-app/CMFAFramework/CMFAFramework.apk=com.samsung.android.cmfa.framework
+/system/priv-app/CMHProvider/CMHProvider.apk=com.samsung.cmh
+/system/priv-app/CocktailBarService_v3.2/CocktailBarService_v3.2.apk=com.samsung.android.app.cocktailbarservice
+/system/priv-app/ContainerAgent3/ContainerAgent3.apk=com.samsung.android.knox.containeragent
+/system/priv-app/ControlPanel/ControlPanel.apk=com.samsung.controlpanel
+/system/priv-app/Crane/Crane.apk=com.samsung.crane
+/system/priv-app/CSC/CSC.apk=com.samsung.sec.android.application.csc
+/system/priv-app/DesktopModeUiService/DesktopModeUiService.apk=com.sec.android.desktopmode.uiservice
+/system/priv-app/DeviceKeystring/DeviceKeystring.apk=com.sec.android.app.factorykeystring
+/system/priv-app/DeviceQualityAgent3/DeviceQualityAgent3.apk=com.samsung.android.dqagent
+/system/priv-app/DeviceTest/DeviceTest.apk=com.sec.factory
+/system/priv-app/DeXonPC/DeXonPC.apk=com.sec.android.app.dexonpc
+/system/priv-app/DiagMonAgent8/DiagMonAgent8.apk=com.sec.android.diagmonagent
+/system/priv-app/DownloadProviderUi/DownloadProviderUi.apk=com.android.providers.downloads.ui
+/system/priv-app/DressRoom/DressRoom.apk=com.samsung.android.app.dressroom
+/system/priv-app/DualOutFocusViewer_S/DualOutFocusViewer_S.apk=com.samsung.android.app.dofviewer
+/system/priv-app/DynamicLockscreen/DynamicLockscreen.apk=com.samsung.android.dynamiclock
+/system/priv-app/DynamicSystemInstallationService/DynamicSystemInstallationService.apk=com.android.dynsystem
+/system/priv-app/EnhancedAttestationAgent/EnhancedAttestationAgent.apk=com.samsung.android.knox.attestation
+/system/priv-app/EpdgService/EpdgService.apk=com.sec.epdg
+/system/priv-app/EsimClient/EsimClient.apk=com.samsung.android.app.telephonyui.esimclient
+/system/priv-app/EuiccService/EuiccService.apk=com.samsung.euicc
+/system/priv-app/ExternalStorageProvider/ExternalStorageProvider.apk=com.android.externalstorage
+/system/priv-app/FaceService/FaceService.apk=com.samsung.faceservice
+/system/priv-app/FactoryTestProvider/FactoryTestProvider.apk=com.samsung.android.providers.factory
+/system/priv-app/FBInstaller_NS/FBInstaller_NS.apk=com.facebook.system
+/system/priv-app/FBServices/FBServices.apk=com.facebook.services
+/system/priv-app/Finder/Finder.apk=com.samsung.android.app.galaxyfinder
+/system/priv-app/FotaAgent/FotaAgent.apk=com.wssyncmldm
+/system/priv-app/FusedLocation/FusedLocation.apk=com.android.location.fused
+/system/priv-app/GameDriver-SM8350/GameDriver-SM8350.apk=com.samsung.gamedriver.sm8350
+/system/priv-app/GameOptimizingService/GameOptimizingService.apk=com.samsung.android.game.gos
+/system/priv-app/GameTools_Dream/GameTools_Dream.apk=com.samsung.android.game.gametools
+/system/priv-app/GooglePackageInstaller/GooglePackageInstaller.apk=com.google.android.packageinstaller
+/system/priv-app/GpuWatchApp/GpuWatchApp.apk=com.samsung.gpuwatchapp
+/system/priv-app/HashTagService/HashTagService.apk=com.samsung.android.service.tagservice
+/system/priv-app/HdmApk/HdmApk.apk=com.samsung.android.hdmapp
+/system/priv-app/Hearingdro_S/Hearingdro_S.apk=com.sec.hearingadjust
+/system/priv-app/HwModuleTest/HwModuleTest.apk=com.sec.android.app.hwmoduletest
+/system/priv-app/ImsLogger/ImsLogger.apk=com.sec.imslogger
+/system/priv-app/imsservice/imsservice.apk=com.sec.imsservice
+/system/priv-app/InputDevices/InputDevices.apk=com.android.inputdevices
+/system/priv-app/IntelligentDynamicFpsService/IntelligentDynamicFpsService.apk=com.sec.android.smartfpsadjuster
+/system/priv-app/IPService/IPService.apk=com.samsung.ipservice
+/system/priv-app/KLMSAgent/KLMSAgent.apk=com.samsung.klmsagent
+/system/priv-app/KnoxAIFrameworkApp/KnoxAIFrameworkApp.apk=com.samsung.android.app.kfa
+/system/priv-app/knoxanalyticsagent/knoxanalyticsagent.apk=com.samsung.android.knox.analytics.uploader
+/system/priv-app/KnoxCore/KnoxCore.apk=com.samsung.android.knox.containercore
+/system/priv-app/KnoxDesktopLauncher/KnoxDesktopLauncher.apk=com.sec.android.app.desktoplauncher
+/system/priv-app/KnoxGuard/KnoxGuard.apk=com.samsung.android.kgclient
+/system/priv-app/KnoxPushManager/KnoxPushManager.apk=com.samsung.android.knox.pushmanager
+/system/priv-app/knoxvpnproxyhandler/knoxvpnproxyhandler.apk=com.knox.vpn.proxyhandler
+/system/priv-app/KPECore/KPECore.apk=com.samsung.android.knox.kpecore
+/system/priv-app/LiveWallpapersPicker/LiveWallpapersPicker.apk=com.android.wallpaper.livepicker
+/system/priv-app/LocaleOverlayManager/LocaleOverlayManager.apk=com.samsung.android.localeoverlaymanager
+/system/priv-app/LocalTransport/LocalTransport.apk=com.android.localtransport
+/system/priv-app/ManagedProvisioning/ManagedProvisioning.apk=com.android.managedprovisioning
+/system/priv-app/MCFDeviceSync/MCFDeviceSync.apk=com.samsung.android.mcfds
+/system/priv-app/MdAgent/MdAgent.apk=com.samsung.android.mdagent
+/system/priv-app/MediaLearningPlatform/MediaLearningPlatform.apk=com.samsung.mlp
+/system/priv-app/MediaProviderLegacy/MediaProviderLegacy.apk=com.android.providers.media
+/system/priv-app/MmsService/MmsService.apk=com.android.mms.service
+/system/priv-app/MobileWips/MobileWips.apk=com.samsung.android.server.wifi.mobilewips
+/system/priv-app/ModemServiceMode/ModemServiceMode.apk=com.sec.android.RilServiceModeApp
+/system/priv-app/MtpApplication/MtpApplication.apk=com.samsung.android.mtp
+/system/priv-app/MtpService/MtpService.apk=com.android.mtp
+/system/priv-app/MultiSoundSetting/MultiSoundSetting.apk=com.samsung.android.setting.multisound
+/system/priv-app/NetworkDiagnostic/NetworkDiagnostic.apk=com.samsung.android.networkdiagnostic
+/system/priv-app/NetworkPermissionConfigGoogle/NetworkPermissionConfigGoogle.apk=com.google.android.networkstack.permissionconfig
+/system/priv-app/NSDSWebApp/NSDSWebApp.apk=com.sec.vsim.ericssonnsds.webapp
+/system/priv-app/NSFusedLocation_v6.0/NSFusedLocation_v6.0.apk=com.sec.location.nsflp2
+/system/priv-app/OdaService/OdaService.apk=com.samsung.oda.service
+/system/priv-app/OmaCP/OmaCP.apk=com.wsomacp
+/system/priv-app/OMCAgent5/OMCAgent5.apk=com.samsung.android.app.omcagent
+/system/priv-app/ONS/ONS.apk=com.android.ons
+/system/priv-app/PaymentFramework/PaymentFramework.apk=com.samsung.android.spayfw
+/system/priv-app/PeopleStripe/PeopleStripe.apk=com.samsung.android.service.peoplestripe
+/system/priv-app/PeripheralFramework/PeripheralFramework.apk=com.samsung.android.peripheral.framework
+/system/priv-app/PhoneErrService/PhoneErrService.apk=com.sec.app.RilErrorNotifier
+/system/priv-app/PrivacyDashboard/PrivacyDashboard.apk=com.samsung.android.privacydashboard
+/system/priv-app/ProxyHandler/ProxyHandler.apk=com.android.proxyhandler
+/system/priv-app/Quickboard/Quickboard.apk=com.samsung.android.mdx.quickboard
+/system/priv-app/ROMTool/ROMTool.apk=com.ketan.romtoolf3
+/system/priv-app/Routines/Routines.apk=com.samsung.android.app.routines
+/system/priv-app/SamsungCalendarProvider/SamsungCalendarProvider.apk=com.android.providers.calendar
+/system/priv-app/SamsungCamera/SamsungCamera.apk=com.sec.android.app.camera
+/system/priv-app/SamsungCarKeyFw/SamsungCarKeyFw.apk=com.samsung.android.carkey
+/system/priv-app/SamsungContacts/SamsungContacts.apk=com.samsung.android.app.contacts
+/system/priv-app/SamsungContactsProvider/SamsungContactsProvider.apk=com.samsung.android.providers.contacts
+/system/priv-app/SamsungControl/SamsungControl.apk=com.wubydax.romcontrol.v2
+/system/priv-app/SamsungCoreServices/SamsungCoreServices.apk=com.samsung.android.scs
+/system/priv-app/SamsungDeviceHealthManagerService/SamsungDeviceHealthManagerService.apk=com.sec.android.sdhms
+/system/priv-app/SamsungDialer/SamsungDialer.apk=com.samsung.android.dialer
+/system/priv-app/SamsungInCallUI/SamsungInCallUI.apk=com.samsung.android.incallui
+/system/priv-app/SamsungMagnifier3/SamsungMagnifier3.apk=com.sec.android.app.magnifier
+/system/priv-app/SamsungMessages/SamsungMessages.apk=com.samsung.android.messaging
+/system/priv-app/SamsungMultiConnectivity/SamsungMultiConnectivity.apk=com.samsung.android.mcfserver
+/system/priv-app/SamsungPositioning/SamsungPositioning.apk=com.samsung.android.samsungpositioning
+/system/priv-app/SamsungSmartSuggestions/SamsungSmartSuggestions.apk=com.samsung.android.smartsuggestions
+/system/priv-app/SCameraSDKService/SCameraSDKService.apk=com.samsung.android.camerasdkservice
+/system/priv-app/SDMConfig/SDMConfig.apk=com.samsung.android.sdm.config
+/system/priv-app/SecAppSeparation/SecAppSeparation.apk=com.samsung.android.appseparation
+/system/priv-app/SecDownloadProvider/SecDownloadProvider.apk=com.android.providers.downloads
+/system/priv-app/SecMediaProvider/SecMediaProvider.apk=com.samsung.android.providers.media
+/system/priv-app/SecMyFiles2020/SecMyFiles2020.apk=com.sec.android.app.myfiles
+/system/priv-app/SecSettings/SecSettings.apk=com.android.settings
+/system/priv-app/SecSettingsIntelligence/SecSettingsIntelligence.apk=com.android.settings.intelligence
+/system/priv-app/SecSetupWizard_Global/SecSetupWizard_Global.apk=com.sec.android.app.SecSetupWizard
+/system/priv-app/SecSoundPicker/SecSoundPicker.apk=com.samsung.android.secsoundpicker
+/system/priv-app/SecTelephonyProvider/SecTelephonyProvider.apk=com.android.providers.telephony
+/system/priv-app/SecureFolder/SecureFolder.apk=com.samsung.knox.securefolder
+/system/priv-app/sec_camerax_service/sec_camerax_service.apk=com.samsung.android.cameraxservice
+/system/priv-app/SEMFactoryApp/SEMFactoryApp.apk=com.sem.factoryapp
+/system/priv-app/SendHelpMessage/SendHelpMessage.apk=com.sec.android.app.safetyassurance
+/system/priv-app/serviceModeApp_FB/serviceModeApp_FB.apk=com.sec.android.app.servicemodeapp
+/system/priv-app/SettingsBixby/SettingsBixby.apk=com.samsung.android.app.settings.bixby
+/system/priv-app/SettingsProvider/SettingsProvider.apk=com.android.providers.settings
+/system/priv-app/SharedStorageBackup/SharedStorageBackup.apk=com.android.sharedstoragebackup
+/system/priv-app/Shell/Shell.apk=com.android.shell
+/system/priv-app/SingleTakeService/SingleTakeService.apk=com.samsung.android.singletake.service
+/system/priv-app/SKMSAgent/SKMSAgent.apk=com.skms.android.agent
+/system/priv-app/SmartCallProvider/SmartCallProvider.apk=com.samsung.android.smartcallprovider
+/system/priv-app/SmartEpdgTestApp/SmartEpdgTestApp.apk=com.sec.epdgtestapp
+/system/priv-app/SmartEye/SmartEye.apk=com.samsung.android.service.airviewdictionary
+/system/priv-app/smartfaceservice/smartfaceservice.apk=com.samsung.android.smartface
+/system/priv-app/SmartManager_v6_DeviceSecurity/SmartManager_v6_DeviceSecurity.apk=com.samsung.android.sm.devicesecurity
+/system/priv-app/SmartSwitchAssistant/SmartSwitchAssistant.apk=com.samsung.android.smartswitchassistant
+/system/priv-app/SmartTouchCall/SmartTouchCall.apk=com.samsung.android.visualars
+/system/priv-app/SOAgent7/SOAgent7.apk=com.sec.android.soagent
+/system/priv-app/SoundAlive_S/SoundAlive_S.apk=com.sec.android.app.soundalive
+/system/priv-app/StatementService/StatementService.apk=com.android.statementservice
+/system/priv-app/StickerFaceARAvatar/StickerFaceARAvatar.apk=com.samsung.android.app.camera.sticker.facearavatar.preload
+/system/priv-app/StoryService/StoryService.apk=com.samsung.storyservice
+/system/priv-app/SumeNNService/SumeNNService.apk=com.samsung.android.sume.nn.service
+/system/priv-app/SVCAgent/SVCAgent.apk=com.samsung.android.svcagent
+/system/priv-app/SVoiceIME/SVoiceIME.apk=com.samsung.android.svoiceime
+/system/priv-app/SystemUIBixby2/SystemUIBixby2.apk=com.samsung.systemui.bixby2
+/system/priv-app/SystemUIDesktop/SystemUIDesktop.apk=com.samsung.desktopsystemui
+/system/priv-app/SystemUpdate/SystemUpdate.apk=com.sec.android.systemupdate
+/system/priv-app/TADownloader/TADownloader.apk=com.samsung.android.tadownloader
+/system/priv-app/Tag/Tag.apk=com.android.apps.tag
+/system/priv-app/TaPackAuthFw/TaPackAuthFw.apk=com.samsung.android.tapack.authfw
+/system/priv-app/TaskEdgePanel_v3.2/TaskEdgePanel_v3.2.apk=com.samsung.android.app.taskedge
+/system/priv-app/Telecom/Telecom.apk=com.android.server.telecom
+/system/priv-app/TelephonyUI/TelephonyUI.apk=com.samsung.android.app.telephonyui
+/system/priv-app/TeleService/TeleService.apk=com.android.phone
+/system/priv-app/ThemeCenter/ThemeCenter.apk=com.samsung.android.themecenter
+/system/priv-app/Traceur/Traceur.apk=com.android.traceur
+/system/priv-app/UserDictionaryProvider/UserDictionaryProvider.apk=com.android.providers.userdictionary
+/system/priv-app/VolumeMonitorProvider_S/VolumeMonitorProvider_S.apk=com.sec.android.app.volumemonitorprovider
+/system/priv-app/VpnDialogs/VpnDialogs.apk=com.android.vpndialogs
+/system/priv-app/wallpaper-res/wallpaper-res.apk=com.samsung.android.wallpaper.res
+/system/product/app/ConnectivityUxOverlay/ConnectivityUxOverlay.apk=com.samsung.android.ConnectivityUxOverlay
+/system/product/app/GoogleCalendarSyncAdapter/GoogleCalendarSyncAdapter.apk=com.google.android.syncadapters.calendar
+/system/product/app/GoogleContactsSyncAdapter/GoogleContactsSyncAdapter.apk=com.google.android.syncadapters.contacts
+/system/product/app/GoogleLocationHistory/GoogleLocationHistory.apk=com.google.android.gms.location.history
+/system/product/app/NetworkStackOverlay/NetworkStackOverlay.apk=com.samsung.android.networkstack
+/system/product/app/WcmUrlsNetworkStackOverlay/WcmUrlsNetworkStackOverlay.apk=com.samsung.android.wcmurlsnetworkstack
+/system/product/overlay/CellBroadcastConfigOverlay.apk=com.google.android.overlay.modules.cellbroadcastreceiver
+/system/product/overlay/CellBroadcastServiceOverlay.apk=com.google.android.overlay.modules.cellbroadcastservice
+/system/product/overlay/DisplayCutoutEmulationCorner/DisplayCutoutEmulationCornerOverlay.apk=com.android.internal.display.cutout.emulation.corner
+/system/product/overlay/DisplayCutoutEmulationDouble/DisplayCutoutEmulationDoubleOverlay.apk=com.android.internal.display.cutout.emulation.double
+/system/product/overlay/DisplayCutoutEmulationHole/DisplayCutoutEmulationHoleOverlay.apk=com.android.internal.display.cutout.emulation.hole
+/system/product/overlay/DisplayCutoutEmulationTall/DisplayCutoutEmulationTallOverlay.apk=com.android.internal.display.cutout.emulation.tall
+/system/product/overlay/DisplayCutoutEmulationWaterfall/DisplayCutoutEmulationWaterfallOverlay.apk=com.android.internal.display.cutout.emulation.waterfall
+/system/product/overlay/FontNotoSerifSource/FontNotoSerifSourceOverlay.apk=com.android.theme.font.notoserifsource
+/system/product/overlay/framework-res__auto_generated_rro_product.apk=android.auto_generated_rro_product__
+/system/product/overlay/GmsConfigOverlayCommon.apk=com.google.android.overlay.gmsconfig.common
+/system/product/overlay/GmsConfigOverlayGeotz.apk=com.google.android.overlay.gmsconfig.geotz
+/system/product/overlay/GmsConfigOverlayGSA.apk=com.google.android.overlay.gmsconfig.gsa
+/system/product/overlay/GmsConfigOverlayPhotos.apk=com.google.android.overlay.gmsconfig.photos
+/system/product/overlay/GoogleDocumentsUIOverlay.apk=com.google.android.overlay.modules.documentsui
+/system/product/overlay/GoogleExtServicesConfigOverlay.apk=com.google.android.overlay.modules.ext.services
+/system/product/overlay/GooglePermissionControllerFrameworkOverlay.apk=com.google.android.overlay.modules.permissioncontroller.forframework
+/system/product/overlay/GooglePermissionControllerOverlay.apk=com.google.android.overlay.modules.permissioncontroller
+/system/product/overlay/ModuleMetadataGoogleOverlay.apk=com.google.android.overlay.modules.modulemetadata.forframework
+/system/product/overlay/NavigationBarMode3Button/NavigationBarMode3ButtonOverlay.apk=com.android.internal.systemui.navbar.threebutton
+/system/product/overlay/NavigationBarModeGestural/NavigationBarModeGesturalOverlay.apk=com.android.internal.systemui.navbar.gestural
+/system/product/overlay/NavigationBarModeGesturalExtraWideBack/NavigationBarModeGesturalOverlayExtraWideBack.apk=com.android.internal.systemui.navbar.gestural_extra_wide_back
+/system/product/overlay/NavigationBarModeGesturalNarrowBack/NavigationBarModeGesturalOverlayNarrowBack.apk=com.android.internal.systemui.navbar.gestural_narrow_back
+/system/product/overlay/NavigationBarModeGesturalNoHint/NavigationBarModeGesturalNoHintOverlay.apk=com.samsung.internal.systemui.navbar.gestural_no_hint
+/system/product/overlay/NavigationBarModeGesturalWideBack/NavigationBarModeGesturalOverlayWideBack.apk=com.android.internal.systemui.navbar.gestural_wide_back
+/system/product/overlay/NavigationBarModeSamsungGestural/NavigationBarModeSamsungGesturalOverlay.apk=com.samsung.internal.systemui.navbar.sec_gestural
+/system/product/overlay/NavigationBarModeSamsungGesturalNoHint/NavigationBarModeSamsungGesturalNoHintOverlay.apk=com.samsung.internal.systemui.navbar.sec_gestural_no_hint
+/system/product/overlay/OneHandedModeGestural/OneHandedModeGesturalOverlay.apk=com.android.internal.systemui.onehanded.gestural
+/system/product/overlay/SemTelephony_RIL.apk=com.samsung.phone.overlay.common
+/system/product/priv-app/CarrierWifi/CarrierWifi.apk=com.google.android.apps.carrier.carrierwifi
+/system/product/priv-app/ConfigUpdater/ConfigUpdater.apk=com.google.android.configupdater
+/system/product/priv-app/GoogleOneTimeInitializer/GoogleOneTimeInitializer.apk=com.google.android.onetimeinitializer
+/system/product/priv-app/GooglePartnerSetup/GooglePartnerSetup.apk=com.google.android.partnersetup
+/system/product/priv-app/HotwordEnrollmentOKGoogleEx3HEXAGON/HotwordEnrollmentOKGoogleEx3HEXAGON.apk=com.android.hotwordenrollment.okgoogle
+/system/product/priv-app/HotwordEnrollmentXGoogleEx3HEXAGON/HotwordEnrollmentXGoogleEx3HEXAGON.apk=com.android.hotwordenrollment.xgoogle
+/system/product/priv-app/ImsServiceEntitlement/ImsServiceEntitlement.apk=com.android.imsserviceentitlement
+/system/product/priv-app/SearchSelector/SearchSelector.apk=com.google.android.apps.setupwizard.searchselector
+/system/system_ext/app/com.qualcomm.qti.services.secureui/com.qualcomm.qti.services.secureui.apk=com.qualcomm.qti.services.secureui
+/system/system_ext/app/QdcmFF/QdcmFF.apk=com.qti.snapdragon.qdcm_ff
+/system/system_ext/priv-app/CarrierConfig/CarrierConfig.apk=com.android.carrierconfig
+/system/system_ext/priv-app/com.qualcomm.qti.services.systemhelper/com.qualcomm.qti.services.systemhelper.apk=com.qualcomm.qti.services.systemhelper
+/system/system_ext/priv-app/EmergencyInfo/EmergencyInfo.apk=com.android.emergency
+/system/system_ext/priv-app/GoogleFeedback/GoogleFeedback.apk=com.google.android.feedback
+/system/system_ext/priv-app/GoogleServicesFramework/GoogleServicesFramework.apk=com.google.android.gsf
+/system/system_ext/priv-app/SetupWizard/SetupWizard.apk=com.google.android.setupwizard
+/system/system_ext/priv-app/StorageManager/StorageManager.apk=com.android.storagemanager
+/system/system_ext/priv-app/SystemUI/SystemUI.apk=com.android.systemui
+/system/system_ext/priv-app/WallpaperCropper/WallpaperCropper.apk=com.android.wallpapercropper
+/system/vendor/app/CACertService/CACertService.apk=vendor.qti.hardware.cacert.server
+/system/vendor/app/com.qualcomm.qti.gpudrivers.lahaina.api30/com.qualcomm.qti.gpudrivers.lahaina.api30.apk=com.qualcomm.qti.gpudrivers.lahaina.api30
+/system/vendor/app/QCC-TR-UI/QCC-TR-UI.apk=com.qualcomm.qti.smq
+/system/vendor/app/TimeService/TimeService.apk=com.qualcomm.timeservice
+/system/vendor/app/vklayer/vklayer.apk=com.samsung.vklayer.sm8350
+/system/vendor/overlay/ConnectivityOverlay/ConnectivityOverlay.apk=com.samsung.android.ConnectivityOverlay
+/system/vendor/overlay/framework-res__auto_generated_rro_vendor.apk=android.auto_generated_rro_vendor__
+/system/vendor/overlay/SoftapOverlay/SoftapOverlay.apk=com.samsung.android.wifi.softap.resources
+/system/vendor/overlay/SoftapOverlayWpa3/SoftapOverlayWpa3.apk=com.samsung.android.wifi.softapwpathree.resources
+/system/vendor/overlay/TetheringOverlay/TetheringOverlay.apk=com.google.android.networkstack.tethering.overlay
+/system/vendor/overlay/TetheringOverlay_Gsi/TetheringOverlay_Gsi.apk=com.samsung.android.networkstack.tethering.overlay

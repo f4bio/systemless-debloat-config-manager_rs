@@ -1,7 +1,8 @@
 extern crate web_sys;
 
-use serde::Serialize;
-use tera::{Context, Tera};
+use gloo::console::log;
+use gloo::timers::callback::Timeout;
+use gloo::utils::document;
 use wasm_bindgen::prelude::*;
 
 mod utils;
@@ -13,84 +14,126 @@ mod utils;
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
 #[wasm_bindgen]
-pub struct SignatureTemplate {
-    template_string: String,
-}
-
-#[wasm_bindgen]
-#[derive(Serialize)]
-pub struct Link {
-    pretty: String,
-    url: String,
-}
-
-#[wasm_bindgen]
-#[derive(Serialize)]
-pub struct User {
-    name: String,
-    position: String,
-}
-
-#[wasm_bindgen]
 extern "C" {
-    fn alert(s: &str);
+  fn alert(s: &str);
+  // Use `js_namespace` here to bind `console.log(..)` instead of just
+  // `log(..)`
+  #[wasm_bindgen(js_namespace = console)]
+  fn log(s: &str);
+
+  // The `console.log` is quite polymorphic, so we can bind it with multiple
+  // signatures. Note that we need to use `js_name` to ensure we always call
+  // `log` in JS.
+  #[wasm_bindgen(js_namespace = console, js_name = log)]
+  fn log_u32(a: u32);
+
+  // Multiple arguments too!
+  #[wasm_bindgen(js_namespace = console, js_name = log)]
+  fn log_many(a: &str, b: &str);
 }
 
-// A macro to provide `println!(..)`-style syntax for `console.log` logging.
-// macro_rules! log {
-//     ( $( $t:tt )* ) => {
-//         web_sys::console::log_1(&format!( $( $t )* ).into());
-//     }
-// }
+fn find_system_apps(data: String) -> Vec<String> {
+  let mut system_apps: Vec<String> = vec![];
+  let mut eat: bool = false;
+
+  for line in data.lines() {
+    if eat {
+      system_apps.push(String::from(line.clone()))
+    }
+    if line.eq("System apps, not debloated:") && eat == false {
+      eat = true;
+    }
+    if line.eq("") && eat == true {
+      eat = false;
+    }
+  }
+  system_apps
+}
+
+fn find_system_packages(data: String) -> Vec<String> {
+  let mut system_packages: Vec<String> = vec![];
+  let mut eat: bool = false;
+
+  for line in data.lines() {
+    if eat {
+      system_packages.push(String::from(line.clone()))
+    }
+    if line.eq("System packages:") && eat == false {
+      eat = true;
+    }
+    if line.eq("") && eat == true {
+      eat = false;
+    }
+  }
+  system_packages
+}
 
 #[wasm_bindgen]
-impl SignatureTemplate {
-    pub fn new() -> SignatureTemplate {
-        utils::set_panic_hook();
+pub fn parse(data: String) -> Result<(), web_sys::ErrorEvent> {
+  let system_apps = find_system_apps(data.clone());
+  let system_packages = find_system_packages(data.clone());
 
-        SignatureTemplate {
-            template_string: utils::get_template(),
-        }
-    }
+  system_apps.iter().for_each(|app| {
+    log!("system_app: {:?}", app);
 
-    pub fn get_template_string(&self) -> String {
-        String::from(&self.template_string)
-    }
+    let html = format!(
+      r##"
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+         <div class="fw-bold">Subheading</div>
+         {}
+         </div>
+        <span class="badge bg-primary rounded-pill">14</span>
+        </li>"##,
+      app
+    );
+    log!("{}", html);
+  });
 
-    pub fn interpolate(
-        &self,
-        name: &str,
-        position: &str,
-        phone_input: &str,
-        email_input: &str,
-        website_input: &str,
-    ) -> String {
-        let user = User {
-            name: name.to_string(),
-            position: position.to_string(),
-        };
+  system_packages.iter().for_each(|package| {
+    log!("system_package: {:?}", package);
 
-        let phone = Link {
-            pretty: phone_input.to_string(),
-            url: format!("tel:+49{}", phone_input.to_string()),
-        };
+    let html = format!(
+      r##"
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+         <div class="fw-bold">Subheading</div>
+         {}
+         </div>
+        <span class="badge bg-primary rounded-pill">14</span>
+        </li>"##,
+      package
+    );
+    log!("{}", html);
+  });
 
-        let email = Link {
-            pretty: email_input.to_string(),
-            url: format!("mailto:{}", email_input.to_string()),
-        };
+  Ok(())
+}
 
-        let website = Link {
-            pretty: website_input.to_string(),
-            url: format!("https://www.{}", website_input),
-        };
+// This is like the `main` function, except for JavaScript.
+#[wasm_bindgen(start)]
+pub fn main() -> Result<(), JsValue> {
+  utils::set_panic_hook();
 
-        let mut context = Context::new();
-        context.insert("user", &user);
-        context.insert("phone", &phone);
-        context.insert("email", &email);
-        context.insert("website", &website);
+  log!("Hello wasm from macro!");
 
-        Tera::one_off(self.get_template_string().as_str(), &context, false).unwrap()
-    }
+  let loading_container_element: Option<web_sys::Element> =
+    document().get_element_by_id("loading-container");
+  let input_container_element: Option<web_sys::Element> =
+    document().get_element_by_id("input-container");
+
+  Timeout::new(1_000, move || {
+    // Do something after the one second timeout is up!
+    loading_container_element
+      .unwrap()
+      .toggle_attribute("hidden")
+      .expect("TODO: panic message");
+    input_container_element
+      .unwrap()
+      .toggle_attribute("hidden")
+      .expect("TODO: panic message");
+  })
+  .forget();
+
+  Ok(())
 }

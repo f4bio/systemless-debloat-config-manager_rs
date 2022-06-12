@@ -1,81 +1,53 @@
-// import "./style.css";
+import "bootstrap";
+import "@fortawesome/fontawesome-free";
+import "@fontsource/fira-mono";
 
+import "./assets/placeholder-loading.svg";
 import wasmLogo from "./assets/webassembly-icon.svg";
 import rustLogo from "./assets/rust-lang-icon.png";
 import bootstrapLogo from "./assets/bootstrap-icon.svg";
-// import { SignatureTemplate } from "systemless-debloat-config-manager";
+
+import { parse } from "../pkg";
 
 const doInit = () => {
   document.querySelector("#rustLangIcon").src = rustLogo;
   document.querySelector("#webassemblyIcon").src = wasmLogo;
   document.querySelector("#bootstrapIcon").src = bootstrapLogo;
 
-  // const signatureCode = document.querySelector("#signatureCode");
-  // const signatureWysiwyg = document.querySelector("#signatureWysiwyg");
-  // const signatureTemplate = SignatureTemplate.new();
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("/service-worker.js").then((registration) => {
+        console.debug("SW registered: ", registration);
+      }).catch(registrationError => {
+        console.error("SW registration failed: ", registrationError);
+      });
+    });
+  }
+  const selectFile = document.getElementById("selectFile");
+  selectFile.addEventListener("change", (event) => {
+    const selectedFileList = event.target["files"];
+    // console.log("selectedFileList:", selectedFileList);
 
-  // eslint-disable-next-line no-unused-vars
-  const doUpdate = () => {
-    // const name = document.getElementById("name").value;
-    // const position = document.getElementById("position").value;
-    // const phone = document.getElementById("phone").value;
-    // const email = document.getElementById("email").value;
-    // const website = document.getElementById("website").value;
-    // const result = signatureTemplate.interpolate(
-    //   name,
-    //   position,
-    //   phone,
-    //   email,
-    //   website
-    // );
-    // signatureCode.querySelector("code").textContent = result;
-    // signatureWysiwyg.innerHTML = result;
-  };
+    const reader = new FileReader();
+    reader.readAsText(selectedFileList.item(0));
 
-  // eslint-disable-next-line no-unused-vars
-  const setClipboard = (value) => {
-    navigator.clipboard.writeText(value).then(
-      () => {
-        /* clipboard successfully set */
-        alert("clipboard successfully set:" + value);
-      },
-      () => {
-        /* clipboard write failed */
-        alert("clipboard write failed :" + value);
-      }
-    );
-  };
+    reader.onload = function() {
+      // console.log("file content:", reader.result);
+      parse(reader.result.toString());
+    };
 
-  // document.querySelector("#copy2clipboard").addEventListener("click", () => {
-  //   setClipboard(signatureCode.querySelector("code").textContent);
-  // });
-
-  // document.querySelector("#code").addEventListener("click", () => {
-  //   signatureWysiwyg.classList.add("hidden");
-  //   signatureCode.classList.remove("hidden");
-  // });
-
-  // document.querySelector("#wysiwyg").addEventListener("click", () => {
-  //   signatureWysiwyg.classList.remove("hidden");
-  //   signatureCode.classList.add("hidden");
-  // });
-
-  // document.querySelectorAll(".default-text-input").forEach((inputElement) => {
-  //   inputElement.addEventListener("input", () => {
-  //     doUpdate();
-  //   });
-  // });
-
-  // signatureCode.classList.remove("hidden");
-  doUpdate();
+    reader.onerror = function() {
+      console.error("error reading file contents:", reader.error);
+    };
+  });
 };
 
 if (document.readyState !== "loading") {
-  console.log("document is already ready, just execute code here");
+  // console.log("document is already ready, just execute code here");
   doInit();
 } else {
   document.addEventListener("DOMContentLoaded", () => {
-    console.log("document was not ready, place code here");
+    // console.log("document was not ready, place code here");
     doInit();
   });
 }
