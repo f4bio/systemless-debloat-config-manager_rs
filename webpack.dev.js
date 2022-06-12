@@ -1,7 +1,6 @@
 const { merge } = require("webpack-merge");
 const common = require("./webpack.common.js");
 const path = require("path");
-const { WebpackConfigDumpPlugin } = require("webpack-config-dump-plugin");
 
 module.exports = merge(common, {
   mode: "development",
@@ -15,8 +14,5 @@ module.exports = merge(common, {
     liveReload: false,
     hot: false,
     static: "./dist"
-  },
-  plugins: [
-    new WebpackConfigDumpPlugin()
-  ]
+  }
 });

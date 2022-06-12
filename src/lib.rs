@@ -1,7 +1,6 @@
 extern crate web_sys;
 
 use gloo::console::log;
-use gloo::timers::callback::Timeout;
 use gloo::utils::document;
 use wasm_bindgen::prelude::*;
 
@@ -70,6 +69,12 @@ fn find_system_packages(data: String) -> Vec<String> {
 
 #[wasm_bindgen]
 pub fn parse(data: String) -> Result<(), web_sys::ErrorEvent> {
+  let input_container_element: Option<web_sys::Element> =
+    document().get_element_by_id("input-container");
+  let result_container_element: Option<web_sys::Element> =
+    document().get_element_by_id("result-container");
+  // let result_list_element: Option<web_sys::Element> = document().get_element_by_id("result-list");
+
   let system_apps = find_system_apps(data.clone());
   let system_packages = find_system_packages(data.clone());
 
@@ -87,6 +92,10 @@ pub fn parse(data: String) -> Result<(), web_sys::ErrorEvent> {
         </li>"##,
       app
     );
+    // document()
+    //   .create_element_with_str("li", &html)
+    //   .unwrap()
+    //   .append_to_element(&result_list_element.unwrap());
     log!("{}", html);
   });
 
@@ -107,6 +116,15 @@ pub fn parse(data: String) -> Result<(), web_sys::ErrorEvent> {
     log!("{}", html);
   });
 
+  input_container_element
+    .unwrap()
+    .toggle_attribute("hidden")
+    .expect("TODO: panic message");
+  result_container_element
+    .unwrap()
+    .toggle_attribute("hidden")
+    .expect("TODO: panic message");
+
   Ok(())
 }
 
@@ -117,23 +135,26 @@ pub fn main() -> Result<(), JsValue> {
 
   log!("Hello wasm from macro!");
 
-  let loading_container_element: Option<web_sys::Element> =
-    document().get_element_by_id("loading-container");
-  let input_container_element: Option<web_sys::Element> =
-    document().get_element_by_id("input-container");
-
-  Timeout::new(1_000, move || {
-    // Do something after the one second timeout is up!
-    loading_container_element
-      .unwrap()
-      .toggle_attribute("hidden")
-      .expect("TODO: panic message");
-    input_container_element
-      .unwrap()
-      .toggle_attribute("hidden")
-      .expect("TODO: panic message");
-  })
-  .forget();
+  // Timeout::new(1_000, move || {
+  //   // Do something after the one second timeout is up!
+  //   log!("Timeout over!");
+  //
+  //   let loading_container_element: Option<web_sys::Element> =
+  //     document().get_element_by_id("loading-container");
+  //   let input_container_element: Option<web_sys::Element> =
+  //     document().get_element_by_id("input-container");
+  //
+  //   loading_container_element
+  //     .unwrap()
+  //     .toggle_attribute("hidden")
+  //     .expect("TODO: panic message");
+  //   input_container_element
+  //     .unwrap()
+  //     .toggle_attribute("hidden")
+  //     .expect("TODO: panic message");
+  // })
+  // .forget();
+  // timeout.forget();
 
   Ok(())
 }

@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin");
+const { ServiceWorkerPlugin } = require("service-worker-webpack");
 
 module.exports = {
   entry: [
@@ -32,7 +33,8 @@ module.exports = {
         "msapplication-TileColor": "#1337af",
         viewport: "width=device-width, initial-scale=1, shrink-to-fit=no"
       }
-    })
+    }),
+    new ServiceWorkerPlugin()
   ],
   experiments: {
     asyncWebAssembly: true
